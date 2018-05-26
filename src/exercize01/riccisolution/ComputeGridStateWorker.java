@@ -1,4 +1,4 @@
-package exercize01.ass01;
+package exercize01.riccisolution;
 
 /**
  * Compute the next state of sub-part of the grid

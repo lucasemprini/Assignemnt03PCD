@@ -1,13 +1,13 @@
-package exercize01.ass01;
+package exercize01.riccisolution;
 
-public class Controller implements InputListener {
+public class ControllerSeq implements InputListener {
 
 	private CellGrid grid;
 	private Flag 	stopFlag;
 	private View view;
 	private int frameRate;
 	
-	public Controller(CellGrid grid, View view, int frameRate){
+	public ControllerSeq(CellGrid grid, View view, int frameRate){
 		this.grid = grid;
 		this.view = view;
 		this.frameRate = frameRate;
@@ -15,7 +15,7 @@ public class Controller implements InputListener {
 	
 	public void started(){
 		stopFlag = new Flag();
-		new Master(grid,view,frameRate,stopFlag).start();
+		new MasterSeq(grid,view,stopFlag,frameRate).start();
 	}
 
 	public void stopped() {
