@@ -1,8 +1,14 @@
 package exercize01.model.test;
 
 
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
 import exercize01.model.Matrix;
 import exercize01.model.MatrixImpl;
+import exercize01.model.actors.StoppableActor;
+import exercize01.model.messages.StartMsg;
+import exercize01.model.messages.StopMsg;
 import exercize01.model.utility.Chrono;
 import exercize01.model.utility.DebugUtility;
 import org.junit.Test;
@@ -33,5 +39,22 @@ public class MatrixImplTest {
         this.chronometer.stop();
 
         System.out.println(TIME_STRING + totalTime);
+    }
+
+    @Test
+    public void executeWithActors() {
+        this.chronometer.start();
+        ActorSystem system = ActorSystem.create("MySystem");
+        ActorRef act = system.actorOf(Props.create(StoppableActor.class));
+        act.tell(new StartMsg(testMatrix, 0), ActorRef.noSender());
+
+        try {
+            Thread.sleep(10000);
+        } catch (Exception ignored){}
+
+        act.tell(new StopMsg(), ActorRef.noSender());
+        System.out.println("!! stop sent !!");
+        this.chronometer.stop();
+        System.out.println(TIME_STRING + this.chronometer.getTime());
     }
 }
