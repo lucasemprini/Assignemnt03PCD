@@ -1,5 +1,6 @@
 package exercize01.model;
 
+import exercize01.model.utility.DebugUtility;
 import exercize01.model.utility.RulesUtility;
 
 import java.util.Random;
@@ -9,8 +10,12 @@ public class MatrixImpl implements Matrix {
     private int numRows;
     private int numColumns;
 
+    private long aliveCells = 0;
+
     private boolean cells[][];
     private boolean next[][];
+
+    private static boolean DEBUG = false;
 
     public MatrixImpl(final int numRows, final int numColumns) {
         this.numColumns = numColumns;
@@ -25,6 +30,7 @@ public class MatrixImpl implements Matrix {
         for(int i=0; i<numRows; i++) {
             for(int j=0; j<numColumns; j++) {
                 this.cells[i][j] = r.nextBoolean();
+                if(cells[i][j]) aliveCells++;
             }
         }
     }
@@ -83,11 +89,26 @@ public class MatrixImpl implements Matrix {
     }
 
     @Override
+    public void setDebugMode(final boolean isDebug) {
+        DEBUG = isDebug;
+    }
+
+    @Override
+    public long getAliveCells() {
+        return this.aliveCells;
+    }
+
+    @Override
     public void update(final int startRow, final int stopRow,
                        final int startColumn, final int stopColumn) {
+        this.aliveCells = 0;
         for(int i = startRow; i < stopRow; i++) {
             for(int j = startColumn; j < stopColumn; j++) {
                 this.updateCellAt(i, j);
+                if(cells[i][j]) this.aliveCells++;
+                if(DEBUG) {
+                    DebugUtility.printCell(getCellAt(i, j), j, stopColumn);
+                }
             }
         }
     }

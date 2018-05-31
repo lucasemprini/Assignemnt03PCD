@@ -11,20 +11,13 @@ NOTA:
 è possibile riusare le parti già sviluppate con l’assignment #1, incluse le soluzioni presentate a lezione.
 
 
-2)  Actor-based distributed sensors network
+
+2)  Actor-based distributed chat
 
 
-Un sistema di attori è utilizzato per modellare (simulare) un insieme N di sensori, distribuiti su un certo territorio, usando 1 attore per ogni sensore.  Si presuppone che ogni attore/sensore misuri periodicamente - con frequenza che varia da sensore a sensore - una certa grandezza v, rappresentata da un valore intero compreso fra 0 e 100. Mediante una GUI, si deve dare la possibilità ad un utente di:
+Implementare una chat distribuita ad attori, con insieme dei partecipanti dinamico - ovvero un utente può aggiungersi e rimuoversi dinamicamente. Ogni messaggio inviato da un utente deve essere visualizzato da tutti gli altri utenti. Il sistema deve essere completamente decentralizzato, a parte - eventualmente - la presenza di un (attore) registro - con indirizzo/nome noto - che tenga traccia dei partecipanti.  I messaggi inviati nella chat devono essere visualizzati da tutti i partecipanti nel medesimo ordine.
 
 
-determinare e visualizzare una global snapshot consistente dell’insieme dei sensori (pulsante snap!), usando l’algoritmo di Chandy-Lamport (evitando quindi di bloccare e sincronizzare i vari attori)
+Facoltativo:
 
-Simulare la failure di un sensore (pulsante fail), imponendo la terminazione forzata di un sensore/attore scelto in modo casuale.
-
-
-
-
-La consegna consiste in una cartella “Assignment-03” compressa (formato zip) contenente
-
-cartella src con i sorgenti del programma
-cartella doc con la relazione in PDF (report.pdf)
+Supporto per una modalità “sezione critica”: un partecipante può chiedere di entrare in sezione critica inserendo un comando predefinito (es: “:enter-cs”). Quando un partecipante entra in sezione critica, possono essere visualizzati solo i suoi messaggi, senza intervallarli a quelli degli altri utenti. Un solo partecipante alla volta può essere in sezione critica. Per uscire dalla sezione critica si può prevedere un altro comando predefinito (es: “:exit-cs”). Un utente può rimanere in sezione critica per un certo tempo massimo Tmax - dopodiché l’uscita è forzata. Durante una sezione critica i messaggi inviati dagli altri partecipanti devono essere rigettati.
