@@ -1,4 +1,4 @@
-package exercize01.ass01;
+package exercize01.riccisolution;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package exercize01.ass01;
+package exercize01.riccisolution;
 
 import java.util.Random;
 
@@ -66,17 +66,9 @@ public class CellGrid {
 		}
 		
 		if (cells[y][x]){
-			if (nAlives <= 1 || nAlives >= 4){
-				next[y][x] = false;
-			} else {
-				next[y][x] = true;
-			}
+			next[y][x] = nAlives > 1 && nAlives < 4;
 		} else {
-			if (nAlives == 3){
-				next[y][x] = true;
-			} else {
-				next[y][x] = false;
-			}
+			next[y][x] = nAlives == 3;
 		}		
 		return next[y][x];
 	}

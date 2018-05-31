@@ -1,4 +1,4 @@
-package exercize01.ass01;
+package exercize01.riccisolution;
 
 /**
  * This master uses an Executor to parallelize the job.

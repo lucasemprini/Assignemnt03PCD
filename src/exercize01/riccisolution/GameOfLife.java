@@ -1,4 +1,4 @@
-package exercize01.ass01;
+package exercize01.riccisolution;
 
 import javax.swing.*;
 
@@ -13,12 +13,12 @@ import javax.swing.*;
 public class GameOfLife {
 	public static void main(String[] args) {
 		
-		int w = 1000;
-		int h = 1000;
+		int w = 5000;
+		int h = 5000;
 		int frameRate = 100;
 		
 		CellGrid grid = new CellGrid(w,h);
-		grid.initRandom(250000);
+		grid.initRandom(2500000);
 		
 		/*
 		grid.drawGlider(10, 10);
