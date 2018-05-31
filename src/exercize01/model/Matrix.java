@@ -15,6 +15,18 @@ public interface Matrix {
     public int getNumColumns();
 
     /**
+     * Metodo che ritorna il numero di celle vive ad ogni computazione.
+     * @return
+     */
+    public long getAliveCells();
+
+    /**
+     * Metodo per settare la modalità debug.
+     * @param isDebug flag che mi dice se devo andare in modalità debug.
+     */
+    public void setDebugMode(final boolean isDebug);
+
+    /**
      * Metodo che setta il numero di righe della matrice
      * @param numRows il numero di righe.
      */
