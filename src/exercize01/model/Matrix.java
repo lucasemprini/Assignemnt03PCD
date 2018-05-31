@@ -73,4 +73,12 @@ public interface Matrix {
      * Metodo che aggiorna effettivamente lo stato corrente di ogni cella.
      */
     public void computeUpdate();
+
+    /**
+     * Restituisce TRUE se la cella è viva, FALSE altrimenti.
+     * @param x riga
+     * @param y colonna
+     * @return TRUE o FALSE.
+     */
+    boolean isAlive(final int x, final int y);
 }

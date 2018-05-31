@@ -15,7 +15,7 @@ public class GameOfLife {
 		
 		int w = 5000;
 		int h = 5000;
-		int frameRate = 100;
+		int frameRate = 10;
 		
 		CellGrid grid = new CellGrid(w,h);
 		grid.initRandom(2500000);
