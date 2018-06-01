@@ -4,11 +4,11 @@ import exercize01.model.Matrix;
 
 public class UpdateMsg {
     private final Matrix m;
-    private final int generation;
+    private final int numGenerations;
 
     public UpdateMsg(final Matrix m, final int generation){
         this.m = m;
-        this.generation = generation;
+        this.numGenerations = generation;
     }
 
     public void update(){
@@ -19,7 +19,7 @@ public class UpdateMsg {
         return this.m;
     }
 
-    public int getGeneration() {
-        return this.generation;
+    public int getNumGenerations() {
+        return this.numGenerations;
     }
 }

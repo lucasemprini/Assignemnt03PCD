@@ -44,9 +44,9 @@ public class MatrixImplTest {
     @Test
     public void executeWithActors() {
         this.chronometer.start();
-        ActorSystem system = ActorSystem.create("MySystem");
-        ActorRef act = system.actorOf(Props.create(StoppableActor.class));
-        act.tell(new StartMsg(testMatrix, 0), ActorRef.noSender());
+        final ActorSystem system = ActorSystem.create("MySystem");
+        final ActorRef act = system.actorOf(Props.create(StoppableActor.class));
+        act.tell(new StartMsg(testMatrix), ActorRef.noSender());
 
         try {
             Thread.sleep(10000);

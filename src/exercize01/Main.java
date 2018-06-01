@@ -1,3 +1,5 @@
+package exercize01;
+
 import exercize01.controller.Controller;
 import exercize01.model.Matrix;
 import exercize01.model.MatrixImpl;

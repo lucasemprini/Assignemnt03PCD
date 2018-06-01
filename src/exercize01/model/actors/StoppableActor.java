@@ -17,18 +17,18 @@ public class StoppableActor extends AbstractActor {
 		return receiveBuilder().match(StartMsg.class, msg -> {
 			stopped = false;
 			this.chrono.start();
-			getSelf().tell(new UpdateMsg(msg.getMatrix(), msg.getGen()), ActorRef.noSender());
+			getSelf().tell(new UpdateMsg(msg.getMatrix(), msg.getNumGenerations()), ActorRef.noSender());
 		}).match(UpdateMsg.class, msg -> {
             if (!stopped) {
                 msg.update();
-                getSelf().tell(new ComputeUpdateMsg(msg.getMatrix(), msg.getGeneration()), ActorRef.noSender());
+                getSelf().tell(new ComputeUpdateMsg(msg.getMatrix(), msg.getNumGenerations()), ActorRef.noSender());
             }
 		}).match(ComputeUpdateMsg.class, msg -> {
 			if (!stopped){
 				msg.computeUpdate();
                 this.chrono.stop();
-                DebugUtility.printOnlyGeneration(msg.getGeneration() + 1, this.chrono.getTime(), msg.getMatrix().getAliveCells());
-				getSelf().tell(new UpdateMsg(msg.getMatrix(), msg.getGeneration() + 1), ActorRef.noSender());
+                DebugUtility.printOnlyGeneration(msg.getNumGeneration() + 1, this.chrono.getTime(), msg.getMatrix().getAliveCells());
+				getSelf().tell(new UpdateMsg(msg.getMatrix(), msg.getNumGeneration() + 1), ActorRef.noSender());
 			}
 		}).match(StopMsg.class, msg -> {
 			System.out.println("stopped!");
