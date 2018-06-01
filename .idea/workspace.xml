@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f50678ca-accc-435c-ab0f-04ed24b037ac" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exercize01/model/messages/UpdateGUIMsg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/actors/Master.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/actors/Master.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/messages/ComputeUpdateMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/messages/ComputeUpdateMatrixMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/messages/StartMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/messages/StartMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/messages/UpdateMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/messages/UpdateMatrixMsg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -33,8 +27,8 @@
       <file leaf-file-name="MatrixImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+            <state relative-caret-position="238">
+              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -213,14 +207,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="exercize01" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="messages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Assignemnt03PCD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignemnt03PCD" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="exercize01" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -294,7 +280,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527848069826" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527848910360" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -318,7 +304,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527848069828" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527848910363" />
       </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -463,7 +449,7 @@
       <workItem from="1527249474038" duration="946000" />
       <workItem from="1527250865537" duration="2174000" />
       <workItem from="1527342691367" duration="4313000" />
-      <workItem from="1527842964221" duration="4474000" />
+      <workItem from="1527842964221" duration="5358000" />
     </task>
     <task id="LOCAL-00001" summary="Inizializzato repository">
       <created>1527172021885</created>
@@ -521,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527846498155</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Modificati tutti i messaggi in modo da supportare una logica di una matrice spacchettata">
+      <created>1527848097179</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1527848097179</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -543,13 +536,15 @@
     <history-entry file="MatrixImplTest_executeWithActors - 2018.06.01 at 11h 12m 57s.xml">
       <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MatrixImplTest_executeWithActors - 2018.06.01 at 12h 14m 04s.xml">
+      <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15485000" />
+    <option name="totallyTimeSpent" value="16369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -597,7 +592,8 @@
     <MESSAGE value="Rifattorizzato il Main" />
     <MESSAGE value="Ancora rifattorizzazioni" />
     <MESSAGE value="Migliorata leggibilità attori e messaggi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Migliorata leggibilità attori e messaggi" />
+    <MESSAGE value="Modificati tutti i messaggi in modo da supportare una logica di una matrice spacchettata" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificati tutti i messaggi in modo da supportare una logica di una matrice spacchettata" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -865,8 +861,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+        <state relative-caret-position="238">
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
         </state>
       </provider>
     </entry>

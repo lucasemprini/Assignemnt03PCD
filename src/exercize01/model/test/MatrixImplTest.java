@@ -16,21 +16,21 @@ import org.junit.Test;
 public class MatrixImplTest {
 
     private final Chrono chronometer = new Chrono();
-    private static final int NUMROWS = 5000;
-    private static final int NUMCOLUMNS = 5000;
+    private static final int NUM_ROWS = 5000;
+    private static final int NUM_COLUMNS = 5000;
     private static final int GENERATIONS = 10;
     private static final String TIME_STRING = "Time elapsed (in millis): ";
 
-    private final Matrix testMatrix = new MatrixImpl(NUMROWS, NUMCOLUMNS);
+    private final Matrix testMatrix = new MatrixImpl(NUM_ROWS, NUM_COLUMNS);
 
     @Test
     public void executeTenGenerations() {
         long totalTime = 0;
-        testMatrix.generateRandomMatrix();
+        this.testMatrix.generateRandomMatrix();
         this.chronometer.start();
         for(int i = 0; i < GENERATIONS; i++) {
-            testMatrix.update(0, NUMROWS, 0, NUMCOLUMNS);
-            testMatrix.computeUpdate();
+            this.testMatrix.update(0, NUM_ROWS, 0, NUM_COLUMNS);
+            this.testMatrix.computeUpdate();
             totalTime += this.chronometer.getTime();
             this.chronometer.stop();
             DebugUtility.printOnlyGeneration(i + 1, this.chronometer.getTime(), this.testMatrix.getAliveCells());
@@ -46,9 +46,9 @@ public class MatrixImplTest {
         this.chronometer.start();
         final ActorSystem system = ActorSystem.create("MySystem");
         final ActorRef act = system.actorOf(Props.create(StoppableActor.class));
-        act.tell(new StartMsg(testMatrix,
-                0, testMatrix.getNumRows(),
-                0, testMatrix.getNumColumns()),
+        act.tell(new StartMsg(this.testMatrix,
+                0, this.testMatrix.getNumRows(),
+                0, this.testMatrix.getNumColumns()),
                 ActorRef.noSender());
 
         try {
