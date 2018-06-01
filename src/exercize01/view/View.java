@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class View extends JFrame implements ActionListener {
 
@@ -66,8 +67,9 @@ public class View extends JFrame implements ActionListener {
 		try {
 			SwingUtilities.invokeAndWait(() -> {
 				this.nAliveCells.setText(String.valueOf(numAliveCells));
-				this.compStateTime.setText(String.valueOf(stateTime));
-				this.repaint();
+                this.compStateTime.setText(String.valueOf(stateTime));
+
+                this.repaint();
 			});
 		} catch (Exception ignored){}
 	}

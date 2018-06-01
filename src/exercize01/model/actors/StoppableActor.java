@@ -2,17 +2,18 @@ package exercize01.model.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
-import exercize01.model.messages.ComputeUpdateMatrixMsg;
-import exercize01.model.messages.StartMsg;
-import exercize01.model.messages.StopMsg;
-import exercize01.model.messages.UpdateMatrixMsg;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+import exercize01.Main;
+import exercize01.model.messages.*;
 import exercize01.model.utility.Chrono;
 import exercize01.model.utility.DebugUtility;
 
 public class StoppableActor extends AbstractActor {
 	private boolean stopped;
 	private final Chrono chrono = new Chrono();
-	private static boolean DEBUG = true;
+	private static boolean DEBUG = false;
+    private ActorRef master;
 
 	private void stopMe() {
 	    this.stopped = true;
@@ -26,7 +27,8 @@ public class StoppableActor extends AbstractActor {
 		return receiveBuilder().match(StartMsg.class, msg -> {
 			startMe();
 			this.chrono.start();
-			getSelf().tell(new UpdateMatrixMsg(msg.getMatrix(),
+			master = getSender();
+			getSelf().tell(new UpdateMatrixMsg(Main.GAME_MATRIX,
                     msg.getNumGenerations(), msg.getStartRow(),
                     msg.getStopRow(), msg.getStartColumn(),
                     msg.getStopColumn()), ActorRef.noSender());
@@ -40,6 +42,10 @@ public class StoppableActor extends AbstractActor {
             }
 		}).match(ComputeUpdateMatrixMsg.class, msg -> {
 			if (!stopped){
+
+                master.tell(new UpdateGUIMsg(),
+                        ActorRef.noSender());
+
 				msg.computeUpdate();
                 this.chrono.stop();
 
@@ -48,15 +54,11 @@ public class StoppableActor extends AbstractActor {
                             this.chrono.getTime(), msg.getMatrix().getAliveCells());
                 }
 
-				getSelf().tell(new UpdateMatrixMsg(msg.getMatrix(),
-                        msg.getNumGeneration() + 1,
-                        msg.getStartRow(), msg.getStopRow(),
-                        msg.getStartColumn(), msg.getStopColumn()), ActorRef.noSender());
+
+
 			}
 		}).match(StopMsg.class, msg -> {
-		    if(DEBUG) {
-		        System.out.println("stopped!");
-		    }
+		    System.out.println("Stoppable is stopped");
 		    stopMe();
 		}).build();
 	}
