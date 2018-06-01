@@ -13,65 +13,63 @@ import java.util.ArrayList;
 
 public class View extends JFrame implements ActionListener {
 
-	private JButton startButton;
-	private JButton stopButton;
-	private JTextField nAliveCells, compStateTime;
-	private ViewPanel gridPanel;
-	private Matrix matrix;
-	private ArrayList<InputListener> listeners;
+	private final JButton startButton = new JButton("start");
+	private final JButton stopButton = new JButton("stop");
+	private final JTextField nAliveCells = new JTextField(10);
+	private final JTextField compStateTime = new JTextField(10);
+	private final ViewPanel gridPanel = new ViewPanel();
+	private final JPanel infoPanel = new JPanel();
+	private final JPanel controlPanel = new JPanel();
+	private final JPanel contentPane = new JPanel();
+	private final LayoutManager layoutManager = new BorderLayout();
+
+	private final Matrix matrix;
+	private final ArrayList<InputListener> listeners;
 
 	public View(int w, int h, Matrix matrix){
 		super("Game of Life");
 		this.matrix = matrix;
-		listeners = new ArrayList<>();
-		setSize(w,h);
-		
-		startButton = new JButton("start");
-		stopButton = new JButton("stop");
-		JPanel controlPanel = new JPanel();
-		controlPanel.add(startButton);
-		controlPanel.add(stopButton);
+		this.listeners = new ArrayList<>();
+		this.setSize(w,h);
+		this.setUpView();
 
-		gridPanel = new ViewPanel(); 
-		gridPanel.setSize(w,h);
-
-		JPanel infoPanel = new JPanel();
-
-		nAliveCells = new JTextField(10);
-		nAliveCells.setText("0");
-		nAliveCells.setEditable(false);
-        infoPanel.add(new JLabel("Num Alive Cells"));
-        infoPanel.add(nAliveCells);
-
-
-		compStateTime = new JTextField(10);
-		compStateTime.setText("0");
-		compStateTime.setEditable(false);
-		infoPanel.add(new JLabel("CompState Time"));
-		infoPanel.add(compStateTime);
-
-		JPanel cp = new JPanel();
-		LayoutManager layout = new BorderLayout();
-		cp.setLayout(layout);
-
-		cp.add(BorderLayout.NORTH,controlPanel);
-		cp.add(BorderLayout.CENTER,gridPanel);
-		cp.add(BorderLayout.SOUTH, infoPanel);
-		setContentPane(cp);		
-		
-		startButton.addActionListener(this);
-		stopButton.addActionListener(this);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.gridPanel.setSize(w,h);
 	}
-	
+
+	private void setUpView() {
+		this.controlPanel.add(startButton);
+		this.controlPanel.add(stopButton);
+
+		this.nAliveCells.setText("0");
+		this.nAliveCells.setEditable(false);
+		this.infoPanel.add(new JLabel("Num Alive Cells"));
+		this.infoPanel.add(nAliveCells);
+
+
+		this.compStateTime.setText("0");
+		this.compStateTime.setEditable(false);
+		this.infoPanel.add(new JLabel("CompState Time"));
+		this.infoPanel.add(compStateTime);
+
+		this.contentPane.setLayout(layoutManager);
+		this.contentPane.add(BorderLayout.NORTH,controlPanel);
+		this.contentPane.add(BorderLayout.CENTER,gridPanel);
+		this.contentPane.add(BorderLayout.SOUTH, infoPanel);
+		this.setContentPane(contentPane);
+
+		this.startButton.addActionListener(this);
+		this.stopButton.addActionListener(this);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+
 	public void update(long numAliveCells, long stateTime){
 		try {
 			SwingUtilities.invokeAndWait(() -> {
-				nAliveCells.setText(""+numAliveCells);
-				compStateTime.setText(""+stateTime);
+				this.nAliveCells.setText(String.valueOf(numAliveCells));
+				this.compStateTime.setText(String.valueOf(stateTime));
 				this.repaint();
 			});
-		} catch (Exception ex){}
+		} catch (Exception ignored){}
 	}
 		
 	public void actionPerformed(ActionEvent ev){
@@ -87,7 +85,7 @@ public class View extends JFrame implements ActionListener {
 	}
 
 	public void addListener(InputListener l){
-		listeners.add(l);
+		this.listeners.add(l);
 	}
 	
 	class ViewPanel extends JPanel implements MouseMotionListener {
@@ -101,37 +99,38 @@ public class View extends JFrame implements ActionListener {
 		private int yFromBase;
 		private int nCellsX, nCellsY;
 			
-		public ViewPanel(){
-			xfrom = 0; yfrom = 0;
+		ViewPanel(){
+			this.xfrom = 0;
+			this.yfrom = 0;
 			this.addMouseMotionListener(this);
 		}
 
 		public void paintComponent(Graphics g) {
-			Graphics2D g2 = (Graphics2D) g;
+			final Graphics2D g2 = (Graphics2D) g;
 			
 			g2.setBackground(Color.WHITE);
 			g2.clearRect(0, 0, this.getWidth(), this.getHeight());
-			
-			nCellsX = this.getWidth()/dx;
-			nCellsY = this.getHeight()/dy;
+
+			this.nCellsX = this.getWidth()/dx;
+			this.nCellsY = this.getHeight()/dy;
 						
 			int x = 0;
 			g2.setColor(Color.GRAY);
-			for (int i = 0; i < nCellsX; i++){
+			for (int i = 0; i < this.nCellsX; i++){
 				g2.drawLine(x, 0, x, this.getHeight());
 				x += dx;
 			}
 			
 			int y = 0;
-			for (int j = 0; j < nCellsY; j++){				
+			for (int j = 0; j < this.nCellsY; j++){
 				g2.drawLine(0, y, this.getWidth(), y);
 				y += dy;
 			}
 
 			g2.setColor(Color.BLACK);
-			for (int i = 0; i < nCellsX; i++){
-				for (int j = 0; j < nCellsY; j++){
-					if (matrix.isAlive(xfrom+i, yfrom+j)){
+			for (int i = 0; i < this.nCellsX; i++){
+				for (int j = 0; j < this.nCellsY; j++){
+					if (matrix.getCellAt(this.xfrom+i, this.yfrom+j)){
 						g2.fillRect(i*dx+1, j*dy+1, dx-2, dy-2);
 					}
 				}
@@ -140,30 +139,30 @@ public class View extends JFrame implements ActionListener {
 
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			Point currPos = e.getPoint();
-			double deltax = currPos.getX() - mousePos.getX();
-			double deltay = currPos.getY() - mousePos.getY();
-			xfrom = xFromBase + (int) Math.round(deltax/dx);
+			final Point currPos = e.getPoint();
+			double deltax = currPos.getX() - this.mousePos.getX();
+			double deltay = currPos.getY() - this.mousePos.getY();
+			this.xfrom = this.xFromBase + (int) Math.round(deltax/dx);
 
-			if (xfrom < 0){
-				xfrom = 0;
-			} else if (xfrom + nCellsX >= matrix.getNumColumns()){
-				xfrom = matrix.getNumColumns() - nCellsX;
+			if (this.xfrom < 0){
+				this.xfrom = 0;
+			} else if (this.xfrom + this.nCellsX >= matrix.getNumColumns()){
+				this.xfrom = matrix.getNumColumns() - this.nCellsX;
 			}
 
-			yfrom = yFromBase + (int) Math.round(deltay/dy);
-			if (yfrom < 0){
-				yfrom = 0;
-			} else if (yfrom + nCellsY >= matrix.getNumRows()){
-				yfrom = matrix.getNumRows() - nCellsY;
+			this.yfrom = this.yFromBase + (int) Math.round(deltay/dy);
+			if (this.yfrom < 0){
+				this.yfrom = 0;
+			} else if (this.yfrom + this.nCellsY >= matrix.getNumRows()){
+				this.yfrom = matrix.getNumRows() - this.nCellsY;
 			}
 		}
 
 		@Override
 		public void mouseMoved(MouseEvent e) {
-			mousePos = e.getPoint();
-			xFromBase = xfrom;
-			yFromBase = yfrom;
+			this.mousePos = e.getPoint();
+			this.xFromBase = this.xfrom;
+			this.yFromBase = this.yfrom;
 		}
 	}
 	
