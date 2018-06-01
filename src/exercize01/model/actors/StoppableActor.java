@@ -2,10 +2,10 @@ package exercize01.model.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
-import exercize01.model.messages.ComputeUpdateMsg;
+import exercize01.model.messages.ComputeUpdateMatrixMsg;
 import exercize01.model.messages.StartMsg;
 import exercize01.model.messages.StopMsg;
-import exercize01.model.messages.UpdateMsg;
+import exercize01.model.messages.UpdateMatrixMsg;
 import exercize01.model.utility.Chrono;
 import exercize01.model.utility.DebugUtility;
 
@@ -26,13 +26,19 @@ public class StoppableActor extends AbstractActor {
 		return receiveBuilder().match(StartMsg.class, msg -> {
 			startMe();
 			this.chrono.start();
-			getSelf().tell(new UpdateMsg(msg.getMatrix(), msg.getNumGenerations()), ActorRef.noSender());
-		}).match(UpdateMsg.class, msg -> {
+			getSelf().tell(new UpdateMatrixMsg(msg.getMatrix(),
+                    msg.getNumGenerations(), msg.getStartRow(),
+                    msg.getStopRow(), msg.getStartColumn(),
+                    msg.getStopColumn()), ActorRef.noSender());
+		}).match(UpdateMatrixMsg.class, msg -> {
             if (!stopped) {
                 msg.update();
-                getSelf().tell(new ComputeUpdateMsg(msg.getMatrix(), msg.getNumGenerations()), ActorRef.noSender());
+                getSelf().tell(new ComputeUpdateMatrixMsg(msg.getMatrix(),
+                        msg.getNumGenerations(), msg.getStartRow(),
+                        msg.getStopRow(), msg.getStartColumn(),
+                        msg.getStopColumn()), ActorRef.noSender());
             }
-		}).match(ComputeUpdateMsg.class, msg -> {
+		}).match(ComputeUpdateMatrixMsg.class, msg -> {
 			if (!stopped){
 				msg.computeUpdate();
                 this.chrono.stop();
@@ -42,7 +48,10 @@ public class StoppableActor extends AbstractActor {
                             this.chrono.getTime(), msg.getMatrix().getAliveCells());
                 }
 
-				getSelf().tell(new UpdateMsg(msg.getMatrix(), msg.getNumGeneration() + 1), ActorRef.noSender());
+				getSelf().tell(new UpdateMatrixMsg(msg.getMatrix(),
+                        msg.getNumGeneration() + 1,
+                        msg.getStartRow(), msg.getStopRow(),
+                        msg.getStartColumn(), msg.getStopColumn()), ActorRef.noSender());
 			}
 		}).match(StopMsg.class, msg -> {
 		    if(DEBUG) {
