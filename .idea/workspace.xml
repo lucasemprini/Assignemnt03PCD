@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f50678ca-accc-435c-ab0f-04ed24b037ac" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/messages/ComputeUpdateMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/messages/ComputeUpdateMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/messages/StartMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/messages/StartMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/messages/UpdateMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/messages/UpdateMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,11 +54,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MatrixImplTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MatrixImplTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="48" column="40" lean-forward="true" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StartSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/exercize01/model/messages/StartSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StoppableActor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+              <folding>
+                <element signature="e#548#549#0" expanded="true" />
+                <element signature="e#579#580#0" expanded="true" />
+                <element signature="e#614#615#0" expanded="true" />
+                <element signature="e#641#642#0" expanded="true" />
+                <element signature="e#1511#1512#0" expanded="true" />
+                <element signature="e#1536#1537#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +119,6 @@
         <option value="$PROJECT_DIR$/src/exercize01/ass01/GameOfLife.java" />
         <option value="$PROJECT_DIR$/src/exercize01/model/messages/UpdateNextMsg.java" />
         <option value="$PROJECT_DIR$/src/exercize01/model/messages/StopMsg.java" />
-        <option value="$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java" />
         <option value="$PROJECT_DIR$/src/exercize01/model/Matrix.java" />
         <option value="$PROJECT_DIR$/src/exercize01/model/MatrixImpl.java" />
         <option value="$PROJECT_DIR$/src/exercize01/view/View.java" />
@@ -107,6 +127,7 @@
         <option value="$PROJECT_DIR$/src/exercize01/model/messages/UpdateMsg.java" />
         <option value="$PROJECT_DIR$/src/exercize01/model/messages/StartMsg.java" />
         <option value="$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java" />
+        <option value="$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java" />
       </list>
     </option>
   </component>
@@ -170,7 +191,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="exercize01" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="messages" type="462c0819:PsiDirectoryNode" />
+              <item name="actors" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -243,7 +264,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527846220295" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527846486085" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -267,7 +288,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527846220297" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527846486087" />
       </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -412,7 +433,7 @@
       <workItem from="1527249474038" duration="946000" />
       <workItem from="1527250865537" duration="2174000" />
       <workItem from="1527342691367" duration="4313000" />
-      <workItem from="1527842964221" duration="2663000" />
+      <workItem from="1527842964221" duration="2902000" />
     </task>
     <task id="LOCAL-00001" summary="Inizializzato repository">
       <created>1527172021885</created>
@@ -456,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527844675291</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ancora rifattorizzazioni">
+      <created>1527846230519</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1527846230519</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -480,7 +508,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13674000" />
+    <option name="totallyTimeSpent" value="13913000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="6" />
@@ -530,7 +558,8 @@
     <MESSAGE value="Aggiunta implementazione ad attori. Wrapper del controller è StoppableActor e funziona (vedi Test). Da organizzare la parte ad attori per spacchettare la matrice ed eseguire le computazioni singole." />
     <MESSAGE value="Rifattorizzazioni sulla View, ora leggermente più leggibile" />
     <MESSAGE value="Rifattorizzato il Main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rifattorizzato il Main" />
+    <MESSAGE value="Ancora rifattorizzazioni" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ancora rifattorizzazioni" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/exercize01/model/Matrix.java">
@@ -648,13 +677,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize01/model/messages/UpdateNextMsg.java" />
-    <entry file="file://$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize01/model/Flag.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -723,13 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exercize01/model/messages/StartSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize01/model/messages/UpdateMsg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -769,6 +784,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="48" column="40" lean-forward="true" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exercize01/model/messages/StartSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding>
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#1511#1512#0" expanded="true" />
+            <element signature="e#1536#1537#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

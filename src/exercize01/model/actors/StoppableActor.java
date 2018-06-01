@@ -12,10 +12,19 @@ import exercize01.model.utility.DebugUtility;
 public class StoppableActor extends AbstractActor {
 	private boolean stopped;
 	private final Chrono chrono = new Chrono();
-	
+	private static boolean DEBUG = true;
+
+	private void stopMe() {
+	    this.stopped = true;
+    }
+
+    private void startMe() {
+	    this.stopped = false;
+    }
+
 	public Receive createReceive() {
 		return receiveBuilder().match(StartMsg.class, msg -> {
-			stopped = false;
+			startMe();
 			this.chrono.start();
 			getSelf().tell(new UpdateMsg(msg.getMatrix(), msg.getNumGenerations()), ActorRef.noSender());
 		}).match(UpdateMsg.class, msg -> {
@@ -27,12 +36,23 @@ public class StoppableActor extends AbstractActor {
 			if (!stopped){
 				msg.computeUpdate();
                 this.chrono.stop();
-                DebugUtility.printOnlyGeneration(msg.getNumGeneration() + 1, this.chrono.getTime(), msg.getMatrix().getAliveCells());
+
+                if(DEBUG) {
+                    DebugUtility.printOnlyGeneration(msg.getNumGeneration() + 1,
+                            this.chrono.getTime(), msg.getMatrix().getAliveCells());
+                }
+
 				getSelf().tell(new UpdateMsg(msg.getMatrix(), msg.getNumGeneration() + 1), ActorRef.noSender());
 			}
 		}).match(StopMsg.class, msg -> {
-			System.out.println("stopped!");
-			stopped = true;
+		    if(DEBUG) {
+		        System.out.println("stopped!");
+		    }
+		    stopMe();
 		}).build();
 	}
+
+	public void setDebug(final boolean debug) {
+	    DEBUG = debug;
+    }
 }
