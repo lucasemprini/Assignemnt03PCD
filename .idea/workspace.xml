@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f50678ca-accc-435c-ab0f-04ed24b037ac" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exercize02/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exercize02/view/ViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exercize02/view/view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment03.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment03.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exercize02/view/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize02/view/ViewController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,16 +76,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ViewController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/exercize02/view/ViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="17" />
+            <state relative-caret-position="221">
+              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.fxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="view.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exercize02/view/view.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-286">
@@ -165,8 +161,8 @@
         <option value="$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java" />
         <option value="$PROJECT_DIR$/src/exercize01/Main.java" />
         <option value="$PROJECT_DIR$/src/exercize02/Main.java" />
-        <option value="$PROJECT_DIR$/src/exercize02/view/ViewController.java" />
         <option value="$PROJECT_DIR$/src/exercize02/view/view.fxml" />
+        <option value="$PROJECT_DIR$/src/exercize02/view/ViewController.java" />
       </list>
     </option>
   </component>
@@ -302,7 +298,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527863465797" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527864630831" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -326,7 +322,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527863465798" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527864630834" />
       </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -486,7 +482,7 @@
       <workItem from="1527342691367" duration="4313000" />
       <workItem from="1527842964221" duration="5383000" />
       <workItem from="1527854834493" duration="5562000" />
-      <workItem from="1527860459462" duration="2598000" />
+      <workItem from="1527860459462" duration="2804000" />
     </task>
     <task id="LOCAL-00001" summary="Inizializzato repository">
       <created>1527172021885</created>
@@ -558,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527848918502</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Creata View del secondo esercizio">
+      <created>1527863486599</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1527863486599</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -585,7 +588,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24554000" />
+    <option name="totallyTimeSpent" value="24760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="6" />
@@ -605,7 +608,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3462783" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1719697" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1719697" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -639,7 +642,8 @@
     <MESSAGE value="Migliorata leggibilità attori e messaggi" />
     <MESSAGE value="Modificati tutti i messaggi in modo da supportare una logica di una matrice spacchettata" />
     <MESSAGE value="Minime modifiche al test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minime modifiche al test" />
+    <MESSAGE value="Creata View del secondo esercizio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creata View del secondo esercizio" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -647,7 +651,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/exercize01/ass01/View.java" />
     <entry file="file://$PROJECT_DIR$/src/exercize01/ass01/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/exercize01/ass01/GameOfLife.java" />
     <entry file="file://$PROJECT_DIR$/src/exercize01/ass01/MasterSeq.java" />
@@ -878,13 +881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exercize02/view/ViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize02/view/view.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-286">
@@ -892,6 +888,16 @@
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment03.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exercize02/view/ViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

@@ -12,6 +12,4 @@ public class ViewController {
     public Button removeButton;
 
     public void initialize() {}
-
-
 }
