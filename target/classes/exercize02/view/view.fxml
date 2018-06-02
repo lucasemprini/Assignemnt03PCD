@@ -9,41 +9,31 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="exercize02.view.ViewController">
-   <HBox AnchorPane.bottomAnchor="0.0"
-         AnchorPane.leftAnchor="0.0"
-         AnchorPane.rightAnchor="0.0"
-         AnchorPane.topAnchor="0.0">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exercize02.view.ViewController">
+   <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <AnchorPane id="left_pane">
-         <VBox AnchorPane.bottomAnchor="0.0"
-               AnchorPane.leftAnchor="0.0"
-               AnchorPane.rightAnchor="0.0"
-               AnchorPane.topAnchor="0.0">
+         <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <AnchorPane>
-               <ScrollPane fitToHeight="true" fitToWidth="true"
-                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                  <ListView fx:id="listOfMessages"/>
+               <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ListView fx:id="listOfMessages" />
                </ScrollPane>
             </AnchorPane>
             <AnchorPane>
-               <BorderPane AnchorPane.bottomAnchor="0.0"
-                           AnchorPane.leftAnchor="0.0"
-                           AnchorPane.rightAnchor="0.0"
-                           AnchorPane.topAnchor="0.0">
+               <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <center>
-                     <TextArea fx:id="textArea" BorderPane.alignment="CENTER"/>
+                     <TextArea fx:id="textArea" BorderPane.alignment="CENTER" />
                   </center>
                   <top>
-                     <Label fx:id="labelActorInfo" text="Actor tizio:" BorderPane.alignment="CENTER"/>
+                     <Label fx:id="labelActorInfo" text="Actor tizio:" BorderPane.alignment="CENTER" />
                   </top>
                   <bottom>
                      <AnchorPane BorderPane.alignment="CENTER">
-                        <Button fx:id="sendButton" mnemonicParsing="false" text="Send" AnchorPane.bottomAnchor="0.0"
-                                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                AnchorPane.topAnchor="0.0"/>
+                        <Button fx:id="sendButton" mnemonicParsing="false" text="Send" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Button>
                      </AnchorPane>
                   </bottom>
                </BorderPane>
@@ -51,23 +41,26 @@
          </VBox>
       </AnchorPane>
       <AnchorPane id="center_pane">
-         <BorderPane AnchorPane.bottomAnchor="0.0"
-              AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0"
-              AnchorPane.topAnchor="0.0">
+         <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
-               <Label text="Actors List" BorderPane.alignment="CENTER"/>
+               <Label text="Actors List" BorderPane.alignment="CENTER" />
             </top>
             <center>
-               <ListView fx:id="actorsList" BorderPane.alignment="CENTER"/>
+               <ListView fx:id="actorsList" BorderPane.alignment="CENTER" />
             </center>
             <bottom>
                <BorderPane BorderPane.alignment="CENTER">
                   <left>
-                     <Button fx:id="addButton" mnemonicParsing="false" text="Add Actor" BorderPane.alignment="CENTER"/>
+                     <Button fx:id="addButton" mnemonicParsing="false" text="+ Add Actor" BorderPane.alignment="CENTER">
+                        <font>
+                           <Font size="18.0" />
+                        </font></Button>
                   </left>
                   <right>
-                     <Button fx:id="removeButton" mnemonicParsing="false" text="Remove Actor" BorderPane.alignment="CENTER"/>
+                     <Button fx:id="removeButton" mnemonicParsing="false" text="Remove Actor -" BorderPane.alignment="CENTER">
+                        <font>
+                           <Font size="18.0" />
+                        </font></Button>
                   </right>
                </BorderPane>
             </bottom>

@@ -11,5 +11,8 @@ public class ViewController {
     public Button addButton;
     public Button removeButton;
 
-    public void initialize() {}
+    public void initialize() {
+        sendButton.setDisable(true);
+        removeButton.setDisable(true);
+    }
 }
