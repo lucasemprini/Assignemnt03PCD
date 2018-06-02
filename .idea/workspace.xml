@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f50678ca-accc-435c-ab0f-04ed24b037ac" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exercize01/model/actors/Master.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/actors/Master.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/actors/StoppableActor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/actors/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/messages/CallWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/messages/CallWorkerMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/messages/StartSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/model/messages/StartSystemMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercize01/model/test/MatrixImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/test/MatrixImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exercize01/test/MatrixImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercize01/test/MatrixImplTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,8 +20,8 @@
       <file leaf-file-name="MatrixImplTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exercize01/test/MatrixImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            <state relative-caret-position="139">
+              <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -46,17 +42,26 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exercize01/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="595">
               <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Master.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Master.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exercize01/model/actors/Master.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+            <state relative-caret-position="413">
+              <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Worker.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/exercize01/model/actors/Worker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -73,6 +78,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/exercize01/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="21" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -82,6 +99,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>View</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -121,9 +143,10 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/exercize02/view/view.fxml" />
         <option value="$PROJECT_DIR$/src/exercize02/view/ViewController.java" />
-        <option value="$PROJECT_DIR$/src/exercize01/test/MatrixImplTest.java" />
         <option value="$PROJECT_DIR$/src/exercize01/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/exercize01/test/MatrixImplTest.java" />
         <option value="$PROJECT_DIR$/src/exercize01/model/actors/Master.java" />
+        <option value="$PROJECT_DIR$/src/exercize01/model/actors/Worker.java" />
       </list>
     </option>
   </component>
@@ -206,6 +229,14 @@
               <item name="Assignemnt03PCD" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="exercize01" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="utility" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Assignemnt03PCD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignemnt03PCD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="exercize01" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -272,7 +303,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MatrixImplTest.executeWithActors">
+  <component name="RunManager" selected="JUnit.MatrixImplTest.executeWithController">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -295,7 +326,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527955485064" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527958212940" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -319,7 +350,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527955485066" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527958212942" />
       </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -374,6 +405,29 @@
       <option name="PACKAGE_NAME" value="exercize01.test" />
       <option name="MAIN_CLASS_NAME" value="exercize01.test.MatrixImplTest" />
       <option name="METHOD_NAME" value="executeWithActors" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="MatrixImplTest.executeWithController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exercize01.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="exercize01.test" />
+      <option name="MAIN_CLASS_NAME" value="exercize01.test.MatrixImplTest" />
+      <option name="METHOD_NAME" value="executeWithController" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -442,9 +496,11 @@
       <item itemvalue="JUnit.MatrixImplTest.executeWithActors" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (1)" />
+      <item itemvalue="JUnit.MatrixImplTest.executeWithController" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MatrixImplTest.executeWithController" />
         <item itemvalue="JUnit.MatrixImplTest.executeWithActors" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
@@ -572,22 +628,17 @@
       <option name="project" value="LOCAL" />
       <updated>1527954526880</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Rifattorizzazioni">
+      <created>1527955499249</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1527955499249</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MatrixImplTest_executeWithActors - 2018.05.31 at 12h 14m 07s.xml">
-      <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MatrixImplTest_executeWithActors - 2018.05.31 at 12h 16m 47s.xml">
-      <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MatrixImplTest_executeWithActors - 2018.05.31 at 12h 17m 19s.xml">
-      <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MatrixImplTest_executeWithActors - 2018.05.31 at 12h 18m 52s.xml">
-      <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MatrixImplTest_executeWithActors - 2018.05.31 at 12h 20m 24s.xml">
       <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
     </history-entry>
@@ -600,12 +651,31 @@
     <history-entry file="MatrixImplTest_executeWithActors - 2018.06.02 at 17h 52m 13s.xml">
       <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MatrixImplTest_executeWithActors - 2018.06.02 at 18h 42m 51s.xml">
+      <configuration name="MatrixImplTest.executeWithActors" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MatrixImplTest_executeWithController - 2018.06.02 at 18h 43m 34s.xml">
+      <configuration name="MatrixImplTest.executeWithController" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MatrixImplTest_executeWithController - 2018.06.02 at 18h 45m 18s.xml">
+      <configuration name="MatrixImplTest.executeWithController" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MatrixImplTest_executeWithController - 2018.06.02 at 18h 48m 48s.xml">
+      <configuration name="MatrixImplTest.executeWithController" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MatrixImplTest_executeWithController - 2018.06.02 at 18h 49m 10s.xml">
+      <configuration name="MatrixImplTest.executeWithController" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MatrixImplTest_executeWithController - 2018.06.02 at 18h 49m 59s.xml">
+      <configuration name="MatrixImplTest.executeWithController" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28013000" />
+    <option name="totallyTimeSpent" value="29266000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -621,7 +691,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3462783" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17424242" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17424242" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -679,7 +749,8 @@
     <MESSAGE value="Creata View del secondo esercizio" />
     <MESSAGE value="Fixati errori di maven" />
     <MESSAGE value="Rimosso il codice di Ricci e miglioramenti alla GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rimosso il codice di Ricci e miglioramenti alla GUI" />
+    <MESSAGE value="Rifattorizzazioni" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rifattorizzazioni" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -812,23 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exercize01/model/utility/DebugUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exercize01/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -890,13 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exercize01/model/actors/Worker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize01/model/InputListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -911,16 +958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exercize02/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize01/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -932,24 +969,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exercize01/test/MatrixImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/exercize01/model/utility/DebugUtility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        <state relative-caret-position="204">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exercize02/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize01/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
+        <state relative-caret-position="595">
           <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exercize01/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="21" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exercize01/test/MatrixImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/exercize01/model/actors/Master.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        <state relative-caret-position="413">
+          <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exercize01/model/actors/Worker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -970,7 +1041,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1029,7 +1100,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: org.scala-lang:scala-library:2.12.5</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>

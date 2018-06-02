@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Master extends AbstractActor {
-    private static int WORKER_MULTIPLIER = 1;
-    private static int NUM_WORKERS = Runtime.getRuntime().availableProcessors() * WORKER_MULTIPLIER;
+    public static int WORKER_MULTIPLIER = 1;
+    public static int NUM_WORKERS = Runtime.getRuntime().availableProcessors() * WORKER_MULTIPLIER;
     private static final int FIXED_START_COLUMN = 0;
     private static boolean DEBUG = true;
     private int numGeneration = 1;

@@ -7,6 +7,7 @@ import akka.actor.Props;
 import exercize01.controller.Controller;
 import exercize01.model.Matrix;
 import exercize01.model.MatrixImpl;
+import exercize01.model.actors.Master;
 import exercize01.model.actors.Worker;
 import exercize01.model.messages.StartMsg;
 import exercize01.model.messages.StopMsg;
@@ -23,7 +24,6 @@ public class MatrixImplTest {
     private static final String TIME_STRING = "Time elapsed (in millis): ";
 
     private final Matrix testMatrix = new MatrixImpl(NUM_ROWS, NUM_COLUMNS);
-    private final Controller controller = new Controller(testMatrix);
     @Test
     public void executeTenGenerations() {
         long totalTime = 0;
@@ -59,7 +59,26 @@ public class MatrixImplTest {
         System.out.println(TIME_STRING + this.chronometer.getTime());
     }
 
+    @Test
     public void executeWithController() {
 
+        this.testMatrix.generateRandomMatrix();
+        final Controller controller = new Controller(testMatrix);
+        
+        DebugUtility.printMatrixDimension(controller.getMatrix(),
+                Master.NUM_WORKERS * Master.WORKER_MULTIPLIER);
+        this.chronometer.start();
+        controller.started();
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        controller.stopped();
+        System.out.println("!! stop sent !!");
+        this.chronometer.stop();
+        System.out.println(TIME_STRING + this.chronometer.getTime());
     }
 }
