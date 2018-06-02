@@ -298,7 +298,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527864630831" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527952185031" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -322,7 +322,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527864630834" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527952185043" />
       </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -482,7 +482,7 @@
       <workItem from="1527342691367" duration="4313000" />
       <workItem from="1527842964221" duration="5383000" />
       <workItem from="1527854834493" duration="5562000" />
-      <workItem from="1527860459462" duration="2804000" />
+      <workItem from="1527860459462" duration="3063000" />
     </task>
     <task id="LOCAL-00001" summary="Inizializzato repository">
       <created>1527172021885</created>
@@ -561,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527863486599</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Modifiche a View">
+      <created>1527864642038</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1527864642038</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -588,11 +595,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24760000" />
+    <option name="totallyTimeSpent" value="25019000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -643,7 +649,8 @@
     <MESSAGE value="Modificati tutti i messaggi in modo da supportare una logica di una matrice spacchettata" />
     <MESSAGE value="Minime modifiche al test" />
     <MESSAGE value="Creata View del secondo esercizio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creata View del secondo esercizio" />
+    <MESSAGE value="Modifiche a View" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifiche a View" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -916,7 +923,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -976,7 +983,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>Maven: com.typesafe.akka:akka-actor_2.12:2.5.12</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
