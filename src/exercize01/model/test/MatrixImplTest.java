@@ -33,7 +33,7 @@ public class MatrixImplTest {
             this.testMatrix.computeUpdate();
             totalTime += this.chronometer.getTime();
             this.chronometer.stop();
-            DebugUtility.printOnlyGeneration(i + 1, this.chronometer.getTime(), this.testMatrix.getAliveCells());
+            DebugUtility.printOnlyGeneration(i + 1, this.chronometer.getTime(), this.testMatrix.getAliveCellsAndReset());
 
         }
         this.chronometer.stop();

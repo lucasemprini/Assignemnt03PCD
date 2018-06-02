@@ -2,8 +2,6 @@ package exercize01.model.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Props;
 import exercize01.Main;
 import exercize01.model.messages.*;
 import exercize01.model.utility.Chrono;
@@ -43,15 +41,13 @@ public class StoppableActor extends AbstractActor {
 		}).match(ComputeUpdateMatrixMsg.class, msg -> {
 			if (!stopped){
 
-                master.tell(new UpdateGUIMsg(),
-                        ActorRef.noSender());
-
-				msg.computeUpdate();
                 this.chrono.stop();
 
+				master.tell(new UpdateGUIMsg(),
+						ActorRef.noSender());
                 if(DEBUG) {
                     DebugUtility.printOnlyGeneration(msg.getNumGeneration() + 1,
-                            this.chrono.getTime(), msg.getMatrix().getAliveCells());
+                            this.chrono.getTime(), msg.getMatrix().getAliveCellsAndReset());
                 }
 
 

@@ -10,13 +10,13 @@ import javax.swing.*;
 public class Main {
 
 
-    private static final int NUMROWS = 1000;
-    private static final int NUMCOLUMNS = 1000;
+    private static final int NUMROWS = 2500;
+    private static final int NUMCOLUMNS = 2500;
     private static final int VIEW_HEIGTH = 600;
     private static final int VIEW_WIDTH = 800;
 
     public static final Matrix GAME_MATRIX = new MatrixImpl(NUMROWS, NUMCOLUMNS);
-    public static final View VIEW = new View(VIEW_WIDTH, VIEW_HEIGTH, GAME_MATRIX);
+    public static View VIEW;
 
     public static void main(String... args) {
         GAME_MATRIX.generateRandomMatrix();
@@ -27,6 +27,7 @@ public class Main {
 		grid.drawBlock(30, 70);
 		*/
         SwingUtilities.invokeLater(()->{
+            VIEW = new View(VIEW_WIDTH, VIEW_HEIGTH);
             final Controller controller = new Controller(GAME_MATRIX, VIEW);
             VIEW.addListener(controller);
             VIEW.setVisible(true);

@@ -26,6 +26,23 @@ public final class RulesUtility {
      * @return il prossimo stato della cella considerata.
      */
     public static boolean nextStatus(final int aliveNeighbours, final boolean myStatus) {
+        if (myStatus) {
+            switch (aliveNeighbours) {
+                case 0: return false;
+                case 1: return false;
+                case 2: return true;
+                case 3: return true;
+                case 4: return false;
+                default: return false;
+            }
+        } else {
+            switch (aliveNeighbours) {
+                case 3: return true;
+                default: return false;
+            }
+        }
+
+        /*
         switch (aliveNeighbours) {
             case 0: return false;
             case 1: return false;
@@ -33,6 +50,6 @@ public final class RulesUtility {
             case 3: return true;
             case 4: return myStatus;
             default: return false;
-        }
+        }*/
     }
 }

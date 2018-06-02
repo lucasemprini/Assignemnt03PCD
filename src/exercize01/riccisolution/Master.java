@@ -47,7 +47,7 @@ public class Master extends Thread {
 
 				long dt = (System.nanoTime() - currentNano)/1000;
 				
-				/* update the view */
+				/* update the VIEW */
 				view.update(nAliveCells, dt);
 				
 				/* synch with the frame rate */

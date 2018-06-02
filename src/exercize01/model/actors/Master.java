@@ -2,12 +2,9 @@ package exercize01.model.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
 import akka.actor.Props;
 import exercize01.Main;
-import exercize01.model.Matrix;
 import exercize01.model.messages.*;
-import exercize01.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +21,7 @@ public class Master extends AbstractActor {
     private List<ActorRef> workers = new ArrayList<>();
 
     public static int getWorkers() {
-        return 10;
+        return Runtime.getRuntime().availableProcessors() * WORKER_MULTIPLIER;
     }
 
     @Override
@@ -42,11 +39,10 @@ public class Master extends AbstractActor {
 
 
                     if (wOffset >= Main.GAME_MATRIX.getNumRows()) wOffset = Main.GAME_MATRIX.getNumRows() - 1;
-                    System.out.println("From: " + callWorker.getRow() + " to: " + wOffset);
 
                     getContext().actorOf(Props.create(StoppableActor.class)).tell(new StartMsg(Main.GAME_MATRIX,
                                     callWorker.getRow(), wOffset,
-                                    FIXED_START_COLUMN, Main.GAME_MATRIX.getNumColumns(), numGeneration),
+                                    FIXED_START_COLUMN, Main.GAME_MATRIX.getNumColumns() - 1, numGeneration),
                             getSelf());
                 }
 
@@ -61,7 +57,8 @@ public class Master extends AbstractActor {
             counter++;
             if (counter == Master.getWorkers()) {
                 System.out.println("UpdateGUIMsg");
-                Main.VIEW.update(Main.GAME_MATRIX.getAliveCells(),  System.currentTimeMillis() - current);
+                Main.GAME_MATRIX.computeUpdate();
+                Main.VIEW.update(Main.GAME_MATRIX.getAliveCellsAndReset(),  System.currentTimeMillis() - current);
                 numGeneration++;
                 reset();
 
