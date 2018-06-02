@@ -7,7 +7,7 @@ import exercize01.model.messages.*;
 import exercize01.model.utility.Chrono;
 import exercize01.model.utility.DebugUtility;
 
-public class StoppableActor extends AbstractActor {
+public class Worker extends AbstractActor {
 	private boolean stopped;
 	private final Chrono chrono = new Chrono();
 	private static boolean DEBUG = false;

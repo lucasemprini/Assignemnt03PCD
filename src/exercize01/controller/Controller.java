@@ -7,11 +7,9 @@ import exercize01.model.Flag;
 import exercize01.model.InputListener;
 import exercize01.model.Matrix;
 import exercize01.model.actors.Master;
-import exercize01.model.messages.StartSystem;
+import exercize01.model.messages.StartSystemMsg;
 import exercize01.model.messages.StopMsg;
-import exercize01.model.messages.UpdateGUIMsg;
 import exercize01.view.View;
-import javafx.scene.paint.Stop;
 
 public class Controller implements InputListener {
 
@@ -25,9 +23,14 @@ public class Controller implements InputListener {
 		this.view = view;
 		master = ActorSystem.create("MySystem").actorOf(Props.create(Master.class));
 	}
+
+	public Controller(Matrix matrix) {
+        this.matrix = matrix;
+        master = ActorSystem.create("MySystem").actorOf(Props.create(Master.class));
+    }
 	
 	public void started(){
-		master.tell(new StartSystem(getMatrix(), getView(), stopFlag),
+		master.tell(new StartSystemMsg(getMatrix(), getView(), stopFlag),
 				ActorRef.noSender());
 
 	}
