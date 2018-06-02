@@ -11,10 +11,9 @@ public class StartMsg {
     private final int stopColumn;
 
     public StartMsg(final Matrix m, final int startRow,
-                    final int stopRow, final int startColumn, final int stopColumn) {
+                    final int stopRow, final int startColumn, final int stopColumn, final int numGenerations) {
         this.numGenerations = 0;
         this.matrix = m;
-        this.matrix.generateRandomMatrix();
         this.startRow = startRow;
         this.startColumn = startColumn;
         this.stopRow = stopRow;

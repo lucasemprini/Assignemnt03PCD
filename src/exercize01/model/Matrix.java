@@ -15,10 +15,10 @@ public interface Matrix {
     public int getNumColumns();
 
     /**
-     * Metodo che ritorna il numero di celle vive ad ogni computazione.
+     * Metodo che ritorna il numero di celle vive ad ogni computazione o lo azzera.
      * @return
      */
-    public long getAliveCells();
+    public long getAliveCellsAndReset();
 
     /**
      * Metodo per settare la modalità debug.
@@ -73,4 +73,8 @@ public interface Matrix {
      * Metodo che aggiorna effettivamente lo stato corrente di ogni cella.
      */
     public void computeUpdate();
+
+    void computeUpdate(final int startRow, final int stopRow,
+                      final int startColumn, final int stopColumn);
+
 }

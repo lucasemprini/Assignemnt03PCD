@@ -22,10 +22,6 @@ public class ComputeUpdateMatrixMsg {
         this.stopColumn = stopColumn;
     }
 
-    public void computeUpdate(){
-        this.m.computeUpdate();
-    }
-
     public Matrix getMatrix() {
         return this.m;
     }

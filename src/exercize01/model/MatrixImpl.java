@@ -4,18 +4,16 @@ import exercize01.model.utility.DebugUtility;
 import exercize01.model.utility.RulesUtility;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class MatrixImpl implements Matrix {
 
+    private static boolean DEBUG = false;
     private int numRows;
     private int numColumns;
-
     private long aliveCells = 0;
-
     private boolean cells[][];
     private boolean next[][];
-
-    private static boolean DEBUG = false;
 
     public MatrixImpl(final int numRows, final int numColumns) {
         this.numColumns = numColumns;
@@ -27,10 +25,10 @@ public class MatrixImpl implements Matrix {
     @Override
     public void generateRandomMatrix() {
         final Random r = new Random();
-        for(int i=0; i<numRows; i++) {
-            for(int j=0; j<numColumns; j++) {
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numColumns; j++) {
                 this.cells[i][j] = r.nextBoolean();
-                if(cells[i][j]) aliveCells++;
+                if (cells[i][j]) aliveCells++;
             }
         }
     }
@@ -38,7 +36,8 @@ public class MatrixImpl implements Matrix {
     /**
      * Metodo che controlla che una coordinata x o y sia compresa nella matrice.
      * Da usare nel metodo che controlla i vicini.
-     * @param x la coordinata x: riga o colonna.
+     *
+     * @param x     la coordinata x: riga o colonna.
      * @param isRow true se sto considerando le righe, false altimenti.
      * @return true se è compresa nella matrice, false altrimenti.
      */
@@ -48,18 +47,22 @@ public class MatrixImpl implements Matrix {
 
     /**
      * Metodo che restituisce il numero di vicini vivi per la cella specificata.
+     *
      * @param x la coordinata x della cella.
      * @param y la coordinata y della cella.
      * @return il numero dei vicini vivi compresa la cella stessa.
      */
     private int getNumNeighboursAlive(int x, int y) {
         int counterAlive = 0;
-        for(int i = x - 1; i <= x + 1; i++) {
-            if(isInBound(i, true)) {
-                for(int j = y - 1; j <= y + 1; j++) {
-                    if(isInBound(j, false)) {
-                        if(cells[i][j]) {
-                            counterAlive++;
+        for (int i = x - 1; i <= x + 1; i++) {
+            if (isInBound(i, true)) {
+                for (int j = y - 1; j <= y + 1; j++) {
+                    if (isInBound(j, false)) {
+                        boolean app = i == x && j == y ? false : true;
+                        if (app) {
+                            if (cells[i][j]) {
+                                counterAlive++;
+                            }
                         }
                     }
                 }
@@ -74,13 +77,13 @@ public class MatrixImpl implements Matrix {
     }
 
     @Override
-    public int getNumColumns() {
-        return this.numColumns;
+    public void setNumRows(int numRows) {
+        this.numRows = numRows;
     }
 
     @Override
-    public void setNumRows(int numRows) {
-        this.numRows = numRows;
+    public int getNumColumns() {
+        return this.numColumns;
     }
 
     @Override
@@ -94,19 +97,20 @@ public class MatrixImpl implements Matrix {
     }
 
     @Override
-    public long getAliveCells() {
-        return this.aliveCells;
+    public long getAliveCellsAndReset() {
+        long app = this.aliveCells;
+        this.aliveCells = 0;
+        return app;
     }
 
     @Override
     public void update(final int startRow, final int stopRow,
                        final int startColumn, final int stopColumn) {
-        this.aliveCells = 0;
-        for(int i = startRow; i < stopRow; i++) {
-            for(int j = startColumn; j < stopColumn; j++) {
+        for (int i = startRow; i <= stopRow; i++) {
+            for (int j = startColumn; j <= stopColumn; j++) {
                 this.updateCellAt(i, j);
-                if(cells[i][j]) this.aliveCells++;
-                if(DEBUG) {
+                if (next[i][j]) this.aliveCells++;
+                if (DEBUG) {
                     DebugUtility.printCell(getCellAt(i, j), j, stopColumn);
                 }
             }
@@ -115,7 +119,7 @@ public class MatrixImpl implements Matrix {
 
     @Override
     public void updateCellAt(int x, int y) {
-        this.next[x][y] = RulesUtility.nextStatus( this.getNumNeighboursAlive(x, y), this.cells[x][y]);
+        this.next[x][y] = RulesUtility.nextStatus(this.getNumNeighboursAlive(x, y), this.cells[x][y]);
     }
 
     @Override
@@ -129,5 +133,13 @@ public class MatrixImpl implements Matrix {
         boolean[][] tmp = cells;
         cells = next;
         next = tmp;
+    }
+
+    @Override
+    public void computeUpdate(final int startRow, final int stopRow,
+                              final int startColumn, final int stopColumn) {
+        IntStream.range(startRow, stopRow).forEach(i -> IntStream.range(startColumn, stopColumn).forEach(j -> {
+            cells[i][j] = next[i][j];
+        }));
     }
 }

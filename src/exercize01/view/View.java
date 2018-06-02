@@ -1,7 +1,7 @@
 package exercize01.view;
 
+import exercize01.Main;
 import exercize01.model.InputListener;
-import exercize01.model.Matrix;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,12 +23,10 @@ public class View extends JFrame implements ActionListener {
 	private final JPanel contentPane = new JPanel();
 	private final LayoutManager layoutManager = new BorderLayout();
 
-	private final Matrix matrix;
 	private final ArrayList<InputListener> listeners;
 
-	public View(int w, int h, Matrix matrix){
+	public View(int w, int h){
 		super("Game of Life");
-		this.matrix = matrix;
 		this.listeners = new ArrayList<>();
 		this.setSize(w,h);
 		this.setUpView();
@@ -66,8 +64,9 @@ public class View extends JFrame implements ActionListener {
 		try {
 			SwingUtilities.invokeAndWait(() -> {
 				this.nAliveCells.setText(String.valueOf(numAliveCells));
-				this.compStateTime.setText(String.valueOf(stateTime));
-				this.repaint();
+                this.compStateTime.setText(String.valueOf(stateTime));
+
+                this.repaint();
 			});
 		} catch (Exception ignored){}
 	}
@@ -113,7 +112,7 @@ public class View extends JFrame implements ActionListener {
 
 			this.nCellsX = this.getWidth()/dx;
 			this.nCellsY = this.getHeight()/dy;
-						
+
 			int x = 0;
 			g2.setColor(Color.GRAY);
 			for (int i = 0; i < this.nCellsX; i++){
@@ -130,7 +129,7 @@ public class View extends JFrame implements ActionListener {
 			g2.setColor(Color.BLACK);
 			for (int i = 0; i < this.nCellsX; i++){
 				for (int j = 0; j < this.nCellsY; j++){
-					if (matrix.getCellAt(this.xfrom+i, this.yfrom+j)){
+					if (Main.GAME_MATRIX.getCellAt(this.xfrom+i, this.yfrom+j)){
 						g2.fillRect(i*dx+1, j*dy+1, dx-2, dy-2);
 					}
 				}
@@ -146,15 +145,15 @@ public class View extends JFrame implements ActionListener {
 
 			if (this.xfrom < 0){
 				this.xfrom = 0;
-			} else if (this.xfrom + this.nCellsX >= matrix.getNumColumns()){
-				this.xfrom = matrix.getNumColumns() - this.nCellsX;
+			} else if (this.xfrom + this.nCellsX >= Main.GAME_MATRIX.getNumColumns()){
+				this.xfrom = Main.GAME_MATRIX.getNumColumns() - this.nCellsX;
 			}
 
 			this.yfrom = this.yFromBase + (int) Math.round(deltay/dy);
 			if (this.yfrom < 0){
 				this.yfrom = 0;
-			} else if (this.yfrom + this.nCellsY >= matrix.getNumRows()){
-				this.yfrom = matrix.getNumRows() - this.nCellsY;
+			} else if (this.yfrom + this.nCellsY >= Main.GAME_MATRIX.getNumRows()){
+				this.yfrom = Main.GAME_MATRIX.getNumRows() - this.nCellsY;
 			}
 		}
 
