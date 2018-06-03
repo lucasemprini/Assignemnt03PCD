@@ -49,12 +49,9 @@ public class Worker extends AbstractActor {
                     DebugUtility.printOnlyGeneration(msg.getNumGeneration() + 1,
                             this.chrono.getTime(), msg.getMatrix().getAliveCellsAndReset());
                 }
-
-
-
 			}
 		}).match(StopMsg.class, msg -> {
-		    System.out.println("Stoppable is stopped");
+		    System.out.println("Worker is stopped");
 		    stopMe();
 		}).build();
 	}

@@ -1,7 +1,5 @@
 package exercize01.model.messages;
 
-import exercize01.model.Matrix;
-
 public class CallWorkerMsg {
 
     private final int row;
