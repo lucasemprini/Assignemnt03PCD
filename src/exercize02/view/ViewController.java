@@ -3,15 +3,9 @@ package exercize02.view;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import akka.actor.dsl.Creators;
-import exercize01.model.messages.StartSystemMsg;
 import exercize02.model.actors.GUIActor;
-import exercize02.model.actors.User;
 import exercize02.model.messages.*;
 import javafx.scene.control.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ViewController {
     public ListView<String> listOfMessages;
@@ -33,6 +27,10 @@ public class ViewController {
         this.setButtonsListeners();
     }
 
+    private String getTextFromArea() {
+        return this.textArea.getText() == null ? "No-msg" : this.textArea.getText();
+    }
+
     private void setButtonsListeners() {
         this.addButton.setOnAction(e -> {
             guiActor.tell(new AddActorButtonPressedMsg(this.actorsList.getItems()), ActorRef.noSender());
@@ -43,17 +41,31 @@ public class ViewController {
     }
 
     private void setUpListView() {
+        this.actorsList.setCellFactory(lst -> new ListCell<ActorRef>() {
+            @Override
+            protected void updateItem(ActorRef item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(item.path().name());
+                }
+            }
+        });
+
         this.actorsList.setOnMouseClicked( ev -> {
             this.guiActor.tell(new ActorSelectedMsg(), ActorRef.noSender());
+            this.sendButton.setDisable(false);
+            this.sendButton.setOnAction( l -> {
+                this.invokeGuiActorForSendMsg(
+                        this.actorsList.getSelectionModel().getSelectedItem(),
+                        this.getTextFromArea());
+            });
         });
     }
 
-    private String getTextFromArea() {
-        return this.textArea.getText();
-    }
-
-    private void invokeGuiActorForSendMsg() {
-        guiActor.tell(new SendMessageMsg(this.getTextFromArea()),
+    private void invokeGuiActorForSendMsg(final ActorRef selectedActor, final String stringToSend) {
+        guiActor.tell(new SendButtonMessageMsg(selectedActor, stringToSend, this.listOfMessages.getItems()),
                 ActorRef.noSender());
     }
 }

@@ -2,10 +2,10 @@ package exercize02.model.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
-import exercize02.model.messages.ActorSelectedMsg;
-import exercize02.model.messages.AddActorButtonPressedMsg;
-import exercize02.model.messages.RemActorButtonPressedMsg;
-import exercize02.model.messages.SendButtonPressedMsg;
+import akka.actor.Props;
+import exercize02.model.messages.*;
+import exercize02.model.utility.ActorsUtility;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 
 public class GUIActor extends AbstractActor {
@@ -17,11 +17,14 @@ public class GUIActor extends AbstractActor {
     }
     @Override
     public Receive createReceive() {
-        return receiveBuilder().match(SendButtonPressedMsg.class, msg -> {
-            //TODO cosa fare quando nella GUI viene premuto il bottone Send.
+        return receiveBuilder().match(SendButtonMessageMsg.class, msg -> {
+            msg.getSender().tell(new SendMsg(msg.getMessage(), msg.getListOfMessages()), getSender());
         }).match(AddActorButtonPressedMsg.class, msg -> {
-
-            //TODO cosa fare quando nella GUI viene premuto il bottone Add.
+            Platform.runLater(() ->
+                    this.users.add(getContext().getSystem().actorOf(
+                            Props.create(User.class, ActorsUtility.generateActorName()),
+                            ActorsUtility.generateActorName()))
+            );
         }).match(RemActorButtonPressedMsg.class, msg -> {
             //TODO cosa fare quando nella GUI viene premuto il bottone Remove.
         }).match(ActorSelectedMsg.class, msg -> {

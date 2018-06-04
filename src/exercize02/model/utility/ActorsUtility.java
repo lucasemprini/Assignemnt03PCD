@@ -2,7 +2,7 @@ package exercize02.model.utility;
 
 import java.util.Random;
 
-public final class GuiUtility {
+public final class ActorsUtility {
 
     private static String[] Beginning = { "Kr", "Ca", "Ra", "Mrok", "Cru",
             "Ray", "Bre", "Zed", "Drak", "Mor", "Jag", "Mer", "Jar", "Mjol",
@@ -18,7 +18,8 @@ public final class GuiUtility {
 
     public static String generateActorName() {
 
-        return Beginning[rand.nextInt(Beginning.length)] +
+        return "Actor__" +
+                Beginning[rand.nextInt(Beginning.length)] +
                 Middle[rand.nextInt(Middle.length)]+
                 End[rand.nextInt(End.length)];
 
