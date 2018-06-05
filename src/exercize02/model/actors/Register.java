@@ -32,9 +32,7 @@ public class Register extends AbstractActor {
             }
         }).match(GetMeOthers.class, getMeOthers -> {
             try {
-                List<ActorRef> app = new LinkedList<>();
-                Collections.copy(app, actors);
-
+                List<ActorRef> app = new LinkedList<>(actors);
                 app.remove(getSender());
 
                 getSender().tell(new OtherActors(app), getSelf());
