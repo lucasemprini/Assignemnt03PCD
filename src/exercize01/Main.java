@@ -10,8 +10,8 @@ import javax.swing.*;
 public class Main {
 
 
-    private static final int NUMROWS = 2500;
-    private static final int NUMCOLUMNS = 2500;
+    private static final int NUMROWS = 5000;
+    private static final int NUMCOLUMNS = 5000;
     private static final int VIEW_HEIGTH = 600;
     private static final int VIEW_WIDTH = 800;
 
@@ -21,11 +21,6 @@ public class Main {
     public static void main(String... args) {
         GAME_MATRIX.generateRandomMatrix();
 
-		/*
-		grid.drawGlider(10, 10);
-		grid.drawGlider(100, 50);
-		grid.drawBlock(30, 70);
-		*/
         SwingUtilities.invokeLater(()->{
             VIEW = new View(VIEW_WIDTH, VIEW_HEIGTH);
             final Controller controller = new Controller(GAME_MATRIX, VIEW);
