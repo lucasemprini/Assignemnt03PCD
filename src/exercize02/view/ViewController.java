@@ -5,7 +5,11 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import exercize02.model.actors.GUIActor;
 import exercize02.model.messages.*;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ViewController {
     public ListView<String> listOfMessages;
@@ -16,11 +20,13 @@ public class ViewController {
     public Button addButton;
     public Button removeButton;
 
+    private Map<ActorRef, ObservableList<String>> listOfChats = new HashMap<>();
     private ActorRef guiActor;
 
     public void initialize() {
         this.guiActor = ActorSystem.create("MySystem").actorOf(Props.create(GUIActor.class,
                 this.actorsList.getItems()));
+
         sendButton.setDisable(true);
         removeButton.setDisable(true);
         this.setUpListView();
@@ -33,6 +39,7 @@ public class ViewController {
 
     private void setButtonsListeners() {
         this.addButton.setOnAction(e -> {
+            //this.listOfChats.put()
             guiActor.tell(new AddActorButtonPressedMsg(this.actorsList.getItems()), ActorRef.noSender());
         });
     }
