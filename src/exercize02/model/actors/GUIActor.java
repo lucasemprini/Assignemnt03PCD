@@ -8,12 +8,18 @@ import exercize02.model.utility.ActorsUtility;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 
+import javax.swing.text.html.ListView;
+import java.util.List;
+import java.util.Map;
+
 public class GUIActor extends AbstractActor {
 
     private final ObservableList<ActorRef> users;
+    private final Map<ActorRef, ObservableList<String>> mapOfChats;
 
-    public GUIActor(final ObservableList<ActorRef> users) {
+    public GUIActor(final ObservableList<ActorRef> users, final Map<ActorRef, ObservableList<String>> mapOfChats) {
         this.users = users;
+        this.mapOfChats = mapOfChats;
     }
     @Override
     public Receive createReceive() {
@@ -27,6 +33,9 @@ public class GUIActor extends AbstractActor {
             );
         }).match(RemActorButtonPressedMsg.class, msg -> {
             Platform.runLater(() -> this.users.remove(msg.getToBeRemoved()));
+        }).match(GUIShowMsg.class, msg -> {
+            Platform.runLater(() -> this.mapOfChats.get(getSender()).add(msg.getMsg()));
+            msg.getSender().tell(new GUIAcknowledgeMsg(msg.getMsg(), msg.getSender()), getSelf());
         }).match(ActorSelectedMsg.class, msg -> {
             //TODO cosa fare quando nella GUI viene selezionato un attore dalla Lista.
         }).build();
