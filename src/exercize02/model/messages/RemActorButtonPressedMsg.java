@@ -1,7 +1,6 @@
 package exercize02.model.messages;
 
 import akka.actor.ActorRef;
-import javafx.collections.ObservableList;
 
 public class RemActorButtonPressedMsg {
 
@@ -9,6 +8,10 @@ public class RemActorButtonPressedMsg {
 
     public RemActorButtonPressedMsg(final ActorRef whoSends) {
         this.removeWho = whoSends;
+    }
+
+    public RemActorButtonPressedMsg(){
+        this.removeWho = null;
     }
 
     public ActorRef getToBeRemoved() {

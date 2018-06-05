@@ -14,6 +14,7 @@ public class Main extends Application {
 
     private static final String LAYOUT_PATH = "/exercize02/view/view.fxml";
     private static final String WINDOW_TITLE = "ACTORS CHAT";
+    public static final boolean DEBUG = true;
 
     public static void main(String... args) {
             launch(args);

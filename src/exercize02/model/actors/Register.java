@@ -2,6 +2,7 @@ package exercize02.model.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
+import exercize02.Main;
 import exercize02.model.messages.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 public class Register extends AbstractActor {
     private final List<ActorRef> actors = new ArrayList<>();
     private int position = 0;
+
 
     @Override
     public Receive createReceive() {
@@ -25,8 +27,8 @@ public class Register extends AbstractActor {
             }
         }).match(RemActorButtonPressedMsg.class, msg -> {
             try {
-                actors.remove(getSender());
-                getSender().tell(new CanExit(), getSender());
+                actors.remove(msg.getToBeRemoved());
+                getSender().tell(new CanExit(msg.getToBeRemoved()), getSender());
             } catch (Exception e) {
                 System.out.println("Impossibile registrare l'attore.\n" + e.getMessage());
             }
@@ -41,6 +43,7 @@ public class Register extends AbstractActor {
             }
         }).match(PassToken.class, passToken -> {
             try {
+
                 position++;
                 if (position >= actors.size()) position = 0;
 
@@ -49,5 +52,10 @@ public class Register extends AbstractActor {
                 System.out.println("Impossibile eseguire il passToken. \n" + ex.getMessage());
             }
         }).build();
+    }
+
+
+    private void log(final String msg) {
+        if (Main.DEBUG) System.out.println("Registry: " + msg);
     }
 }

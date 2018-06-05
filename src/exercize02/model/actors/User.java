@@ -3,6 +3,7 @@ package exercize02.model.actors;
 import akka.actor.AbstractActor;
 import akka.actor.AbstractActorWithStash;
 import akka.actor.ActorRef;
+import exercize02.Main;
 import exercize02.model.messages.*;
 import javafx.application.Platform;
 
@@ -12,6 +13,9 @@ import java.util.List;
 import java.util.Queue;
 
 public class User extends AbstractActorWithStash {
+
+    private static final int TOKEN_TIME = 2500;
+    private long startTime;
 
     private final String name;
     private boolean token = false;
@@ -37,29 +41,35 @@ public class User extends AbstractActorWithStash {
             guiActor = startUser.getGuiActor();
             stash();
         }).match(SendMsg.class, msg -> {
+            log("Messaggio inserito nel buffer");
             buffer.add(msg.getMessage());
         }).match(RemActorButtonPressedMsg.class, remActorButtonPressedMsg -> {
             wantExit = true;
         }).match(TakeToken.class, takeToken -> {
             takeToken();
-
-            registry.tell(new GetMeOthers(), ActorRef.noSender());
-
+            registry.tell(new GetMeOthers(), getSelf());
         }).match(OtherActors.class, otherActors -> {
             this.otherActors = otherActors.getActors();
             getSelf().tell(new SendBroadcastMsg(buffer.poll(), this.otherActors), ActorRef.noSender());
         }).match(SendBroadcastMsg.class, sendBroadcastMsg -> {
             if (sendBroadcastMsg.getMsg() != null) {
-                setWaitingActors(sendBroadcastMsg.getActors().size());
-                sendBroadcastMsg.getActors().forEach(actorRef -> actorRef.tell(new ShowMsg(sendBroadcastMsg.getMsg()), getSelf()));
+                setWaitingActors(sendBroadcastMsg.getActors().size() + 1);
+                sendBroadcastMsg.getActors().forEach(actorRef -> {
+                    log("Send msg to: " + actorRef.toString());
+                    actorRef.tell(new ShowMsg(sendBroadcastMsg.getMsg()), getSelf());
+
+                });
+
+                getSelf().tell(new AcknowledgeMsg(sendBroadcastMsg.getMsg()), getSelf());
             } else {
                 getSelf().tell(new TerminateUserOperation(), ActorRef.noSender());
             }
         }).match(AcknowledgeMsg.class, acknowledgeMsg -> {
             incCounter();
-
+            log("Ricevuto un acknowledge");
             if (getCounter() >= getWaitingActors()) {
                 reset();
+                log("Chiamo la GUI per renderizzare su di me");
                 guiActor.tell(new GUIShowMsg(acknowledgeMsg.getMsg(), getSelf()), getSelf());
             }
         }).match(GUIAcknowledgeMsg.class, guiAcknowledgeMsg -> {
@@ -94,9 +104,18 @@ public class User extends AbstractActorWithStash {
     public void takeToken() {
         unstashAll();
         this.token = true;
+        startTime = System.currentTimeMillis();
     }
 
     private void passToken() {
+        long sleep = TOKEN_TIME - (System.currentTimeMillis() - startTime);
+        if (sleep > 0) {
+            try {
+                Thread.sleep(sleep);
+            } catch (Exception ex) {
+                log(ex.getMessage());
+            }
+        }
         registry.tell(new PassToken(), getSelf());
         this.token = false;
     }
@@ -128,5 +147,9 @@ public class User extends AbstractActorWithStash {
         counter = 0;
         setWaitingActors(0);
         setWaiting(false);
+    }
+
+    private void log(final String msg) {
+        if (Main.DEBUG) System.out.println("User " + getName() + " : " + msg);
     }
 }
