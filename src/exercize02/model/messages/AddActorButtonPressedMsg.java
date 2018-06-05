@@ -5,6 +5,9 @@ import exercize02.model.actors.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AddActorButtonPressedMsg {
 
     private final ObservableList<ActorRef> users;
