@@ -26,7 +26,7 @@ public class GUIActor extends AbstractActor {
                             ActorsUtility.generateActorName()))
             );
         }).match(RemActorButtonPressedMsg.class, msg -> {
-            //TODO cosa fare quando nella GUI viene premuto il bottone Remove.
+            Platform.runLater(() -> this.users.remove(msg.getToBeRemoved()));
         }).match(ActorSelectedMsg.class, msg -> {
             //TODO cosa fare quando nella GUI viene selezionato un attore dalla Lista.
         }).build();

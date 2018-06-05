@@ -35,9 +35,6 @@ public class ViewController {
         this.addButton.setOnAction(e -> {
             guiActor.tell(new AddActorButtonPressedMsg(this.actorsList.getItems()), ActorRef.noSender());
         });
-        this.removeButton.setOnAction(e -> {
-            guiActor.tell(new RemActorButtonPressedMsg(), ActorRef.noSender());
-        });
     }
 
     private void setUpListView() {
@@ -56,10 +53,16 @@ public class ViewController {
         this.actorsList.setOnMouseClicked( ev -> {
             this.guiActor.tell(new ActorSelectedMsg(), ActorRef.noSender());
             this.sendButton.setDisable(false);
-            this.sendButton.setOnAction( l -> {
+            this.removeButton.setDisable(false);
+            this.sendButton.setOnAction( add -> {
                 this.invokeGuiActorForSendMsg(
                         this.actorsList.getSelectionModel().getSelectedItem(),
                         this.getTextFromArea());
+            });
+
+            this.removeButton.setOnAction(rem -> {
+                this.invokeGuiActorForRemoveActor(this.actorsList.getSelectionModel().getSelectedItem());
+                this.removeButton.setDisable(true);
             });
         });
     }
@@ -67,5 +70,8 @@ public class ViewController {
     private void invokeGuiActorForSendMsg(final ActorRef selectedActor, final String stringToSend) {
         guiActor.tell(new SendButtonMessageMsg(selectedActor, stringToSend, this.listOfMessages.getItems()),
                 ActorRef.noSender());
+    }
+    private void invokeGuiActorForRemoveActor(final ActorRef selectedActor) {
+        guiActor.tell(new RemActorButtonPressedMsg(selectedActor), ActorRef.noSender());
     }
 }
