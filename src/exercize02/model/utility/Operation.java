@@ -1,4 +1,4 @@
-package exercize02.model.actors;
+package exercize02.model.utility;
 
 /**
  * Pattern funzionale.

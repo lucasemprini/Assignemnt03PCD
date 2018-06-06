@@ -66,7 +66,7 @@ public class GUIActor extends AbstractActor {
                 boolean start = users.size() == 0;
                 this.users.add(newActor);
 
-                if (start) registry.tell(new PassToken(), ActorRef.noSender());
+                if (start) newActor.tell(new TakeToken(0), ActorRef.noSender());
 
             });
         }).match(RemActorButtonPressedMsg.class, msg -> {
