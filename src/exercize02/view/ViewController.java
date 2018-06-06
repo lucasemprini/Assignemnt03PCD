@@ -31,7 +31,8 @@ public class ViewController {
 
     public void initialize() {
         this.guiActor = ActorSystem.create("MySystem").actorOf(Props.create(GUIActor.class,
-                this.actorsList.getItems(), this.mapOfChats, this.listOfMessages.getItems()));
+                this.actorsList.getItems(), this.mapOfChats,
+                this.listOfMessages.getItems(), this.labelActorInfo));
 
         sendButton.setDisable(true);
         removeButton.setDisable(true);
@@ -42,7 +43,7 @@ public class ViewController {
 
     private void setDialogWindow() {
         TextInputDialog dialog = new TextInputDialog("NewActor" +
-                (this.addCounter == 0 ? "" : this.addCounter-1));
+                (this.addCounter == 0 ? "" : this.addCounter));
         this.addCounter++;
         dialog.setTitle("Name selection");
         dialog.setHeaderText("What's your name?");

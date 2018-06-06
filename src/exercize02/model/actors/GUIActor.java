@@ -9,6 +9,7 @@ import exercize02.model.utility.ActorsUtility;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 
 import java.util.Map;
 
@@ -18,13 +19,16 @@ public class GUIActor extends AbstractActor {
     private ObservableList<String> currentChat;
     private final ActorRef registry;
     private Map<ActorRef, ObservableList<String>> mapOfChats;
+    private final Label actorLabel;
 
     public GUIActor(final ObservableList<ActorRef> users,
                     final Map<ActorRef, ObservableList<String>> mapOfChats,
-                    final ObservableList<String> currentChat) {
+                    final ObservableList<String> currentChat,
+                    final Label actorLabel) {
         this.users = users;
         this.mapOfChats = mapOfChats;
         this.currentChat = currentChat;
+        this.actorLabel = actorLabel;
         registry = ActorSystem.create("MySystem").actorOf(Props.create(Register.class));
     }
 
@@ -86,12 +90,19 @@ public class GUIActor extends AbstractActor {
 
             Platform.runLater(() -> {
                 this.mapOfChats.get(sender).add(msg.getFullMsg());
+                System.out.println("Map of chats.get(sender) = "
+                        + this.mapOfChats.get(sender)
+                        + "\nSender: " + sender
+                        + "\nmessage: " + msg.getFullMsg());
             });
 
 
             getSender().tell(new GUIAcknowledgeMsg(msg.getMsg(), msg.getSender()), getSelf());
         }).match(ActorSelectedMsg.class, msg -> {
-            this.currentChat = mapOfChats.get(msg.getSelected());
+            Platform.runLater(() -> {
+                this.currentChat = mapOfChats.get(msg.getSelected());
+                this.actorLabel.setText(msg.getSelected().path().name() + " says:");
+            });
         }).build();
     }
 }
