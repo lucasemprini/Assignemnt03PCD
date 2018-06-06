@@ -7,12 +7,10 @@ import exercize02.model.messages.*;
 import exercize02.model.utility.Operation;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Register extends AbstractActor {
     private final List<ActorRef> actors = new ArrayList<>();
-    private int position = 0;
 
 
     /**
@@ -37,8 +35,8 @@ public class Register extends AbstractActor {
 
         }).match(RemActorButtonPressedMsg.class, msg -> {
             loggedOperation(() -> {
-                actors.remove(msg.getToBeRemoved());
-                getSender().tell(new CanExit(msg.getToBeRemoved()), getSender());
+                actors.remove(getSender());
+                getSender().tell(new CanExit(getSender()), getSender());
             },"Impossibile registrare l'attore.");
 
         }).match(GetMeActors.class, getMeActors -> {
