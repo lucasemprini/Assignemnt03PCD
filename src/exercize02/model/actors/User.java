@@ -39,9 +39,11 @@ public class User extends AbstractActorWithStash {
      * l'attore lo gestisce solo la prima volta, utilizzato per ottenere il riferimento al Register e al GUI Actor.
      * - SendMsg
      * Riceve l'intenzione da parte dell'attore di inviare un messaggio e lo appoggia nel buffer.
+     * Se non si possiede il token verrà chiamata la stash()
      * Verrà gestito alla ricezione del token.
      * - RemActorButtonPressedMsg
      * riceve che l'utente è intenzionato ad uscire e viene salvato.
+     * Se non si possiede il token verrà chiamata la stash()
      * Verrà poi gestita l'uscita solo quando si otterrà il token e tutti i messaggi nel buffer saranno inviati.
      * - TakeToken
      * riceve il token ed avvia tutte le operazioni, in ordine:
@@ -49,7 +51,7 @@ public class User extends AbstractActorWithStash {
      * 2 Avvio del procedimento di rilascio del token
      * 3 Controllo della volontà di uscire, se SI viene gestita
      * 4 rilascio effettivo del token
-     * - OtherActors
+     * - AllActors
      * viene ricevuto questo messaggio dal Registry dopo avergli chiesto gli altri attori registrati.
      * Una volta ottenuti avvia la procedura di invio dei messaggi
      * - SendBroadcastMsg
@@ -100,16 +102,16 @@ public class User extends AbstractActorWithStash {
             takeToken();
             registry.tell(new GetMeActors(), getSelf());
 
-        }).match(OtherActors.class, otherActors -> {
-            this.actors = otherActors.getActors();
+        }).match(AllActors.class, allActors -> {
+            this.actors = allActors.getActors();
             getSelf().tell(new SendBroadcastMsg(buffer.poll(), this.actors), ActorRef.noSender());
 
         }).match(SendBroadcastMsg.class, sendBroadcastMsg -> {
             if (sendBroadcastMsg.getMsg() != null) {
-                setWaitingActors(sendBroadcastMsg.getActors().size());
+                setWaitingActors(actors.size());
                 sendBroadcastMsg.getActors().stream()
-                                            .filter(e -> (!e.equals(getSelf())))
-                                            .forEach(actorRef -> actorRef.tell(new ShowMsg(sendBroadcastMsg.getMsg()), getSelf()));
+                        .filter(e -> (!e.equals(getSelf())))
+                        .forEach(actorRef -> actorRef.tell(new ShowMsg(sendBroadcastMsg.getMsg()), getSelf()));
                 getSelf().tell(new AcknowledgeMsg(sendBroadcastMsg.getMsg()), getSelf());
             } else {
                 getSelf().tell(new TerminateUserOperation(), ActorRef.noSender());
