@@ -1,0 +1,131 @@
+Starting a GameOfLife with a 5000x5000 Matrix and 4 workers:
+
+Generation 1:	Alive Cells: 18438520;	 Time elapsed (in millis): 844
+Generation 2:	Alive Cells: 5516432;	 Time elapsed (in millis): 726
+Generation 3:	Alive Cells: 5047636;	 Time elapsed (in millis): 502
+Generation 4:	Alive Cells: 4855403;	 Time elapsed (in millis): 500
+Generation 5:	Alive Cells: 4807474;	 Time elapsed (in millis): 523
+Generation 6:	Alive Cells: 4610985;	 Time elapsed (in millis): 490
+Generation 7:	Alive Cells: 4713793;	 Time elapsed (in millis): 587
+Generation 8:	Alive Cells: 4369223;	 Time elapsed (in millis): 473
+Generation 9:	Alive Cells: 4277927;	 Time elapsed (in millis): 469
+Generation 10:	Alive Cells: 4171274;	 Time elapsed (in millis): 460
+Generation 11:	Alive Cells: 4081650;	 Time elapsed (in millis): 454
+Generation 12:	Alive Cells: 4013644;	 Time elapsed (in millis): 458
+Generation 13:	Alive Cells: 3922576;	 Time elapsed (in millis): 450
+Generation 14:	Alive Cells: 3852877;	 Time elapsed (in millis): 445
+Generation 15:	Alive Cells: 3784014;	 Time elapsed (in millis): 447
+Generation 16:	Alive Cells: 3731500;	 Time elapsed (in millis): 445
+Generation 17:	Alive Cells: 3672286;	 Time elapsed (in millis): 445
+Generation 18:	Alive Cells: 3617461;	 Time elapsed (in millis): 444
+
+
+Starting a GameOfLife with a 5000x5000 Matrix and 1 worker:
+
+Generation 1:	Alive Cells: 19343618;	 Time elapsed (in millis): 1673
+Generation 2:	Alive Cells: 6341742;	 Time elapsed (in millis): 1285
+Generation 3:	Alive Cells: 6268278;	 Time elapsed (in millis): 1130
+Generation 4:	Alive Cells: 5967381;	 Time elapsed (in millis): 1107
+Generation 5:	Alive Cells: 5803810;	 Time elapsed (in millis): 1089
+Generation 6:	Alive Cells: 5596839;	 Time elapsed (in millis): 1071
+Generation 7:	Alive Cells: 5437254;	 Time elapsed (in millis): 1079
+Generation 8:	Alive Cells: 5277523;	 Time elapsed (in millis): 1046
+Generation 9:	Alive Cells: 5138936;	 Time elapsed (in millis): 1023
+Generation 10:	Alive Cells: 5005914;	 Time elapsed (in millis): 1012
+Generation 11:	Alive Cells: 4888247;	 Time elapsed (in millis): 1004
+Generation 12:	Alive Cells: 4773568;	 Time elapsed (in millis): 1004
+Generation 13:	Alive Cells: 4664789;	 Time elapsed (in millis): 984
+Generation 14:	Alive Cells: 4565657;	 Time elapsed (in millis): 979
+Generation 15:	Alive Cells: 4475546;	 Time elapsed (in millis): 975
+Generation 16:	Alive Cells: 4388978;	 Time elapsed (in millis): 978
+Generation 17:	Alive Cells: 4306613;	 Time elapsed (in millis): 962
+Generation 18:	Alive Cells: 4230065;	 Time elapsed (in millis): 945
+
+
+Starting a GameOfLife with a 5000x5000 Matrix and 8 workers:
+
+Generation 1:	Alive Cells: 17774696;	 Time elapsed (in millis): 844
+Generation 2:	Alive Cells: 5175681;	 Time elapsed (in millis): 554
+Generation 3:	Alive Cells: 4969439;	 Time elapsed (in millis): 625
+Generation 4:	Alive Cells: 4838344;	 Time elapsed (in millis): 499
+Generation 5:	Alive Cells: 4672785;	 Time elapsed (in millis): 477
+Generation 6:	Alive Cells: 4580646;	 Time elapsed (in millis): 491
+Generation 7:	Alive Cells: 4630399;	 Time elapsed (in millis): 552
+Generation 8:	Alive Cells: 4341069;	 Time elapsed (in millis): 468
+Generation 9:	Alive Cells: 4233391;	 Time elapsed (in millis): 459
+Generation 10:	Alive Cells: 4161586;	 Time elapsed (in millis): 475
+Generation 11:	Alive Cells: 4082558;	 Time elapsed (in millis): 468
+Generation 12:	Alive Cells: 4003212;	 Time elapsed (in millis): 464
+Generation 13:	Alive Cells: 3926717;	 Time elapsed (in millis): 457
+Generation 14:	Alive Cells: 3836722;	 Time elapsed (in millis): 449
+Generation 15:	Alive Cells: 3791439;	 Time elapsed (in millis): 455
+Generation 16:	Alive Cells: 3723941;	 Time elapsed (in millis): 452
+Generation 17:	Alive Cells: 3654767;	 Time elapsed (in millis): 440
+Generation 18:	Alive Cells: 3585895;	 Time elapsed (in millis): 434
+
+
+Starting a GameOfLife with a 1000x1000 Matrix and 4 workers:
+
+Generation 1:	Alive Cells: 755413;	 Time elapsed (in millis): 115
+Generation 2:	Alive Cells: 238086;	 Time elapsed (in millis): 44
+Generation 3:	Alive Cells: 233831;	 Time elapsed (in millis): 43
+Generation 4:	Alive Cells: 214047;	 Time elapsed (in millis): 41
+Generation 5:	Alive Cells: 215190;	 Time elapsed (in millis): 45
+Generation 6:	Alive Cells: 201477;	 Time elapsed (in millis): 42
+Generation 7:	Alive Cells: 202074;	 Time elapsed (in millis): 34
+Generation 8:	Alive Cells: 196497;	 Time elapsed (in millis): 39
+Generation 9:	Alive Cells: 191956;	 Time elapsed (in millis): 34
+Generation 10:	Alive Cells: 183268;	 Time elapsed (in millis): 31
+Generation 11:	Alive Cells: 185599;	 Time elapsed (in millis): 36
+Generation 12:	Alive Cells: 175219;	 Time elapsed (in millis): 34
+Generation 13:	Alive Cells: 170940;	 Time elapsed (in millis): 35
+Generation 14:	Alive Cells: 168123;	 Time elapsed (in millis): 34
+Generation 15:	Alive Cells: 156514;	 Time elapsed (in millis): 25
+Generation 16:	Alive Cells: 157770;	 Time elapsed (in millis): 28
+Generation 17:	Alive Cells: 150376;	 Time elapsed (in millis): 23
+Generation 18:	Alive Cells: 149603;	 Time elapsed (in millis): 25
+
+
+Starting a GameOfLife with a 1000x1000 Matrix and 1 worker:
+
+Generation 1:	Alive Cells: 774733;	 Time elapsed (in millis): 102
+Generation 2:	Alive Cells: 254624;	 Time elapsed (in millis): 74
+Generation 3:	Alive Cells: 250359;	 Time elapsed (in millis): 52
+Generation 4:	Alive Cells: 238923;	 Time elapsed (in millis): 49
+Generation 5:	Alive Cells: 231876;	 Time elapsed (in millis): 47
+Generation 6:	Alive Cells: 223806;	 Time elapsed (in millis): 54
+Generation 7:	Alive Cells: 216875;	 Time elapsed (in millis): 53
+Generation 8:	Alive Cells: 210316;	 Time elapsed (in millis): 59
+Generation 9:	Alive Cells: 204916;	 Time elapsed (in millis): 52
+Generation 10:	Alive Cells: 199920;	 Time elapsed (in millis): 48
+Generation 11:	Alive Cells: 195191;	 Time elapsed (in millis): 46
+Generation 12:	Alive Cells: 190921;	 Time elapsed (in millis): 42
+Generation 13:	Alive Cells: 186776;	 Time elapsed (in millis): 44
+Generation 14:	Alive Cells: 182459;	 Time elapsed (in millis): 44
+Generation 15:	Alive Cells: 179056;	 Time elapsed (in millis): 43
+Generation 16:	Alive Cells: 175540;	 Time elapsed (in millis): 45
+Generation 17:	Alive Cells: 172138;	 Time elapsed (in millis): 44
+Generation 18:	Alive Cells: 169037;	 Time elapsed (in millis): 45
+
+
+Starting a GameOfLife with a 1000x1000 Matrix and 8 workers:
+
+Generation 1:	Alive Cells: 751387;	 Time elapsed (in millis): 108
+Generation 2:	Alive Cells: 234349;	 Time elapsed (in millis): 56
+Generation 3:	Alive Cells: 243028;	 Time elapsed (in millis): 419
+Generation 4:	Alive Cells: 220043;	 Time elapsed (in millis): 49
+Generation 5:	Alive Cells: 210241;	 Time elapsed (in millis): 31
+Generation 6:	Alive Cells: 197396;	 Time elapsed (in millis): 29
+Generation 7:	Alive Cells: 196314;	 Time elapsed (in millis): 33
+Generation 8:	Alive Cells: 190181;	 Time elapsed (in millis): 33
+Generation 9:	Alive Cells: 191216;	 Time elapsed (in millis): 38
+Generation 10:	Alive Cells: 186671;	 Time elapsed (in millis): 36
+Generation 11:	Alive Cells: 179975;	 Time elapsed (in millis): 37
+Generation 12:	Alive Cells: 178056;	 Time elapsed (in millis): 39
+Generation 13:	Alive Cells: 170373;	 Time elapsed (in millis): 39
+Generation 14:	Alive Cells: 169528;	 Time elapsed (in millis): 37
+Generation 15:	Alive Cells: 165837;	 Time elapsed (in millis): 34
+Generation 16:	Alive Cells: 155476;	 Time elapsed (in millis): 26
+Generation 17:	Alive Cells: 155070;	 Time elapsed (in millis): 25
+Generation 18:	Alive Cells: 156103;	 Time elapsed (in millis): 34
+
