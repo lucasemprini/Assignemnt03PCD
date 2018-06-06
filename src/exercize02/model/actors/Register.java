@@ -22,7 +22,7 @@ public class Register extends AbstractActor {
      *  - RemActorButtonPressedMsg
      *      rimuove dalla lista degli attori registrati il sender e gli notificata tramite il messaggio CanExit
      *      che può avviare le operazioni di uscita
-     *  - GetMeOthers
+     *  - GetMeActors
      *      Risponde a questo messaggio inviando al sender un messaggio OthrerActors nel quale fornisce la lista di attori
      *      registrati escluso quello che la richiede
      *  - PassToken
@@ -41,19 +41,10 @@ public class Register extends AbstractActor {
                 getSender().tell(new CanExit(msg.getToBeRemoved()), getSender());
             },"Impossibile registrare l'attore.");
 
-        }).match(GetMeOthers.class, getMeOthers -> {
+        }).match(GetMeActors.class, getMeActors -> {
             loggedOperation(() -> {
-                List<ActorRef> app = new LinkedList<>(actors);
-                app.remove(getSender());
-                getSender().tell(new OtherActors(app), getSelf());
-            }, "Impossibile rispondere alla getMeOthers.");
-
-        }).match(PassToken.class, passToken -> {
-            loggedOperation(() -> {
-                position = position % (actors.size());
-                actors.get(position).tell(new TakeToken(position), getSelf());
-                position++;
-            }, "Impossibile eseguire il passToken");
+                getSender().tell(new OtherActors(actors), getSelf());
+            }, "Impossibile rispondere alla getMeActors.");
 
         }).build();
     }

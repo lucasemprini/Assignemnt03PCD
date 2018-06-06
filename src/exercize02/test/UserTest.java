@@ -8,7 +8,7 @@ import exercize02.model.actors.GUIActor;
 import exercize02.model.actors.Register;
 import exercize02.model.actors.User;
 import exercize02.model.messages.AddActorButtonPressedMsg;
-import exercize02.model.messages.GetMeOthers;
+import exercize02.model.messages.GetMeActors;
 import exercize02.model.messages.OtherActors;
 import exercize02.model.messages.RemActorButtonPressedMsg;
 import org.junit.Before;
@@ -41,7 +41,7 @@ public class UserTest {
 
 
     /**
-     * Aggiunta di due attori al registro e visualizzazione del corretto funzionamento del GetMeOthers
+     * Aggiunta di due attori al registro e visualizzazione del corretto funzionamento del GetMeActors
      * @throws Exception
      */
     @Test
@@ -52,7 +52,7 @@ public class UserTest {
         registry.tell(new AddActorButtonPressedMsg(), chatOne);
         registry.tell(new AddActorButtonPressedMsg(), chatTwo);
 
-        registry.tell(new GetMeOthers(), testUnit.getRef());
+        registry.tell(new GetMeActors(), testUnit.getRef());
         OtherActors msg = testUnit.expectMsgClass(OtherActors.class);
 
         assertEquals(2, msg.getActors().size());
@@ -75,7 +75,7 @@ public class UserTest {
         registry.tell(new RemActorButtonPressedMsg(chatOne), chatOne);
         Thread.sleep(100);
 
-        registry.tell(new GetMeOthers(), testUnit.getRef());
+        registry.tell(new GetMeActors(), testUnit.getRef());
         OtherActors msg = testUnit.expectMsgClass(OtherActors.class);
 
         assertEquals(1, msg.getActors().size());

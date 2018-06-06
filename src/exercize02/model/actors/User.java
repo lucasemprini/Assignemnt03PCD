@@ -21,7 +21,7 @@ public class User extends AbstractActorWithStash {
     private final Queue<String> buffer = new LinkedList<>();
     private ActorRef registry;
     private ActorRef guiActor;
-    private List<ActorRef> otherActors;
+    private List<ActorRef> actors;
     private long startTime;
     private boolean token = false;
     private int nWaiting = 0;
@@ -98,16 +98,18 @@ public class User extends AbstractActorWithStash {
         }).match(TakeToken.class, takeToken -> {
             myPosition = takeToken.getPosition();
             takeToken();
-            registry.tell(new GetMeOthers(), getSelf());
+            registry.tell(new GetMeActors(), getSelf());
 
         }).match(OtherActors.class, otherActors -> {
-            this.otherActors = otherActors.getActors();
-            getSelf().tell(new SendBroadcastMsg(buffer.poll(), this.otherActors), ActorRef.noSender());
+            this.actors = otherActors.getActors();
+            getSelf().tell(new SendBroadcastMsg(buffer.poll(), this.actors), ActorRef.noSender());
 
         }).match(SendBroadcastMsg.class, sendBroadcastMsg -> {
             if (sendBroadcastMsg.getMsg() != null) {
-                setWaitingActors(sendBroadcastMsg.getActors().size() + 1);
-                sendBroadcastMsg.getActors().forEach(actorRef -> actorRef.tell(new ShowMsg(sendBroadcastMsg.getMsg()), getSelf()));
+                setWaitingActors(sendBroadcastMsg.getActors().size());
+                sendBroadcastMsg.getActors().stream()
+                                            .filter(e -> (!e.equals(getSelf())))
+                                            .forEach(actorRef -> actorRef.tell(new ShowMsg(sendBroadcastMsg.getMsg()), getSelf()));
                 getSelf().tell(new AcknowledgeMsg(sendBroadcastMsg.getMsg()), getSelf());
             } else {
                 getSelf().tell(new TerminateUserOperation(), ActorRef.noSender());
@@ -122,7 +124,7 @@ public class User extends AbstractActorWithStash {
 
         }).match(GUIAcknowledgeMsg.class, guiAcknowledgeMsg -> {
             if (guiAcknowledgeMsg.getSender() == getSelf()) {
-                getSelf().tell(new SendBroadcastMsg(buffer.poll(), otherActors), ActorRef.noSender());
+                getSelf().tell(new SendBroadcastMsg(buffer.poll(), actors), ActorRef.noSender());
             } else {
                 guiAcknowledgeMsg.getSender().tell(new AcknowledgeMsg(guiAcknowledgeMsg.getMsg()), getSelf());
             }
@@ -140,6 +142,7 @@ public class User extends AbstractActorWithStash {
 
         }).match(CanExit.class, canExit -> {
             guiActor.tell(new CanExit(getSelf()), ActorRef.noSender());
+            myPosition--;
             passToken();
 
         }).build();
@@ -183,8 +186,15 @@ public class User extends AbstractActorWithStash {
                 log(ex.getMessage());
             }
         }
-        registry.tell(new PassToken(), getSelf());
         this.token = false;
+        if (actors.size() == 0) {
+            getSelf().tell(new TakeToken(0), getSelf());
+        } else {
+            int next = myPosition + 1;
+            if (next >= actors.size()) next = 0;
+            actors.get(next).tell(new TakeToken(next), getSelf());
+        }
+
     }
 
     /**
