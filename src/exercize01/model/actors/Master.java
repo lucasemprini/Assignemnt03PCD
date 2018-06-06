@@ -41,6 +41,10 @@ public class Master extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder().match(StartSystemMsg.class, startSystem -> {
+            System.out.println("Starting a GameOfLife with a "
+                    + Main.GAME_MATRIX.getNumRows() +"x"
+                    + Main.GAME_MATRIX.getNumRows()
+                    + " Matrix and " + NUM_WORKERS + " workers:\n");
             if (!isRunning()) {
                 setRunning(true);
                 current = System.currentTimeMillis();

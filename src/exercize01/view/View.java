@@ -23,6 +23,8 @@ public class View extends JFrame implements ActionListener {
 	private final JPanel contentPane = new JPanel();
 	private final LayoutManager layoutManager = new BorderLayout();
 
+    private int numGenerations = 0;
+
 	private final ArrayList<InputListener> listeners;
 
 	public View(int w, int h){
@@ -63,8 +65,13 @@ public class View extends JFrame implements ActionListener {
 	public void update(long numAliveCells, long stateTime){
 		try {
 			SwingUtilities.invokeAndWait(() -> {
+			    this.numGenerations++;
 				this.nAliveCells.setText(String.valueOf(numAliveCells));
                 this.compStateTime.setText(String.valueOf(stateTime));
+
+                System.out.println("Generation " + numGenerations
+                        + ":\tAlive Cells: " + String.valueOf(numAliveCells)
+                        + ";\t Time elapsed (in millis): " + String.valueOf(stateTime));
 
                 this.repaint();
 			});
