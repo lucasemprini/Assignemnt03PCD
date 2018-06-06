@@ -4,6 +4,7 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import exercize02.Main;
 import exercize02.model.messages.*;
+import exercize02.model.utility.Operation;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -50,7 +51,7 @@ public class Register extends AbstractActor {
         }).match(PassToken.class, passToken -> {
             loggedOperation(() -> {
                 position = position % (actors.size());
-                actors.get(position).tell(new TakeToken(), getSelf());
+                actors.get(position).tell(new TakeToken(position), getSelf());
                 position++;
             }, "Impossibile eseguire il passToken");
 

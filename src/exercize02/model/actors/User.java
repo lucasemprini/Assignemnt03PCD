@@ -4,6 +4,7 @@ import akka.actor.AbstractActorWithStash;
 import akka.actor.ActorRef;
 import exercize02.Main;
 import exercize02.model.messages.*;
+import exercize02.model.utility.Operation;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class User extends AbstractActorWithStash {
     private boolean token = false;
     private int nWaiting = 0;
     private int counter = 0;
+    private int myPosition = 0;
     private boolean wantExit = false;
 
     public User(final String name) {
@@ -94,6 +96,7 @@ public class User extends AbstractActorWithStash {
             stashOrDo(() -> wantExit = true);
 
         }).match(TakeToken.class, takeToken -> {
+            myPosition = takeToken.getPosition();
             takeToken();
             registry.tell(new GetMeOthers(), getSelf());
 

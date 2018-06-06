@@ -80,5 +80,8 @@ public class UserTest {
 
         assertEquals(1, msg.getActors().size());
         assertEquals(chatTwo, msg.getActors().get(0));
+
+        //Lancia eccezione di NullPointer perchè alla riga 40 di User non è null guiActor
+        //giustamente perchè non è mai mandato il messaggio startSystem
     }
 }
