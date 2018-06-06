@@ -15,12 +15,16 @@ import java.util.Map;
 public class GUIActor extends AbstractActor {
 
     private final ObservableList<ActorRef> users;
+    private ObservableList<String> currentChat;
     private final ActorRef registry;
     private Map<ActorRef, ObservableList<String>> mapOfChats;
 
-    public GUIActor(final ObservableList<ActorRef> users, final Map<ActorRef, ObservableList<String>> mapOfChats) {
+    public GUIActor(final ObservableList<ActorRef> users,
+                    final Map<ActorRef, ObservableList<String>> mapOfChats,
+                    final ObservableList<String> currentChat) {
         this.users = users;
         this.mapOfChats = mapOfChats;
+        this.currentChat = currentChat;
         registry = ActorSystem.create("MySystem").actorOf(Props.create(Register.class));
     }
 
@@ -46,10 +50,10 @@ public class GUIActor extends AbstractActor {
             msg.getSender().tell(new SendMsg(msg.getMessage(), msg.getListOfMessages()), getSender());
         }).match(AddActorButtonPressedMsg.class, msg -> {
             Platform.runLater(() -> {
-                final String actorName = ActorsUtility.generateActorName();
+                final String actorName = msg.getActorName();
                 final ActorRef newActor = getContext().getSystem().actorOf(
                         Props.create(User.class, actorName), actorName);
-                registry.tell(new AddActorButtonPressedMsg(), newActor);
+                registry.tell(new AddActorButtonPressedMsg(actorName), newActor);
                 newActor.tell(new StartUser(registry, getSelf()), ActorRef.noSender());
 
                 this.mapOfChats.putIfAbsent(newActor, FXCollections.observableArrayList());
@@ -64,7 +68,15 @@ public class GUIActor extends AbstractActor {
             msg.getToBeRemoved().tell(new RemActorButtonPressedMsg(), getSelf());
 
         }).match(CanExit.class, canExit -> {
-            Platform.runLater(() -> this.users.remove(canExit.getToBeRemoved()));
+            Platform.runLater(() -> {
+                    final ActorRef toBeRemoved = canExit.getToBeRemoved();
+                    this.users.remove(toBeRemoved);
+                    System.out.println("Removing chat: " + this.currentChat);
+                    this.currentChat.clear();
+                    System.out.println("Removing chat: " + this.currentChat);
+                    this.mapOfChats.remove(toBeRemoved);
+
+            });
         }).match(GUIShowMsg.class, msg -> {
             /*
                 Appoggio il riferimento all'attore mittente,
@@ -72,11 +84,14 @@ public class GUIActor extends AbstractActor {
             */
             final ActorRef sender = getSender();
 
-            Platform.runLater(() -> this.mapOfChats.get(sender).add(msg.getFullMsg()));
+            Platform.runLater(() -> {
+                this.mapOfChats.get(sender).add(msg.getFullMsg());
+            });
+
 
             getSender().tell(new GUIAcknowledgeMsg(msg.getMsg(), msg.getSender()), getSelf());
         }).match(ActorSelectedMsg.class, msg -> {
-            //TODO cosa fare quando nella GUI viene selezionato un attore dalla Lista.
+            this.currentChat = mapOfChats.get(msg.getSelected());
         }).build();
     }
 }
