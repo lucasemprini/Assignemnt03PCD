@@ -55,11 +55,12 @@ public class Register extends AbstractActor {
             }
         }).match(PassToken.class, passToken -> {
             try {
-                position++;
+
                 //if (position >= actors.size()) position = 0;
-                position = position % (actors.size() -1);
+                position = position % (actors.size());
 
                 actors.get(position).tell(new TakeToken(), getSelf());
+                position++;
             } catch (Exception ex) {
                 log("Impossibile eseguire il passToken. \n" + ex.getMessage());
             }
