@@ -8,6 +8,9 @@ import javafx.collections.ObservableList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Notifica l'aggiunta di un attore alla chat.
+ */
 public class AddActorButtonPressedMsg {
 
     private final ObservableList<ActorRef> users;

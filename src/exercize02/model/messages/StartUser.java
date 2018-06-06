@@ -2,6 +2,9 @@ package exercize02.model.messages;
 
 import akka.actor.ActorRef;
 
+/**
+ * Setting di un nuovo attore nella chat.
+ */
 public class StartUser {
 
     private final ActorRef registry;
@@ -12,10 +15,18 @@ public class StartUser {
         this.guiActor = guiActor;
     }
 
+    /**
+     * Registro.
+     * @return
+     */
     public ActorRef getRegistry() {
         return registry;
     }
 
+    /**
+     * Attore gestore della GUI.
+     * @return
+     */
     public ActorRef getGuiActor() {
         return guiActor;
     }

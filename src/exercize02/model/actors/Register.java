@@ -6,7 +6,6 @@ import exercize02.Main;
 import exercize02.model.messages.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,22 +14,35 @@ public class Register extends AbstractActor {
     private int position = 0;
 
 
+    /**
+     * Funzionalità per ogni messaggio:
+     *  - AddActorButtonPressedMsg
+     *      aggiunge alla lista degli attori registrati il sender.
+     *  - RemActorButtonPressedMsg
+     *      rimuove dalla lista degli attori registrati il sender e gli notificata tramite il messaggio CanExit
+     *      che può avviare le operazioni di uscita
+     *  - GetMeOthers
+     *      Risponde a questo messaggio inviando al sender un messaggio OthrerActors nel quale fornisce la lista di attori
+     *      registrati escluso quello che la richiede
+     *  - PassToken
+     *      Assegna il token all'elemento successivo della lista, raggiunto l'ultimo riparte.
+     *      Glielo notifica tramite il messaggio takeToken
+     * @return
+     */
     @Override
     public Receive createReceive() {
-        return receiveBuilder().match(ActorsInRegistryAskMsg.class, msg -> {
-            //TODO cosa fare quando si chiede la lista degli attori nel Registro.
-        }).match(AddActorButtonPressedMsg.class, msg -> {
+        return receiveBuilder().match(AddActorButtonPressedMsg.class, msg -> {
             try {
                 actors.add(getSender());
             } catch (Exception e) {
-                System.out.println("Impossibile registrare l'attore.\n" + e.getMessage());
+                log("Impossibile registrare l'attore.\n" + e.getMessage());
             }
         }).match(RemActorButtonPressedMsg.class, msg -> {
             try {
                 actors.remove(msg.getToBeRemoved());
                 getSender().tell(new CanExit(msg.getToBeRemoved()), getSender());
             } catch (Exception e) {
-                System.out.println("Impossibile registrare l'attore.\n" + e.getMessage());
+                log("Impossibile registrare l'attore.\n" + e.getMessage());
             }
         }).match(GetMeOthers.class, getMeOthers -> {
             try {
@@ -39,17 +51,17 @@ public class Register extends AbstractActor {
 
                 getSender().tell(new OtherActors(app), getSelf());
             } catch (Exception ex) {
-                System.out.println("Rispondere alla getMeOthers.\n" + ex.getMessage());
+                log("Impossibile rispondere alla getMeOthers.\n" + ex.getMessage());
             }
         }).match(PassToken.class, passToken -> {
             try {
-
                 position++;
-                if (position >= actors.size()) position = 0;
+                //if (position >= actors.size()) position = 0;
+                position = position % (actors.size() -1);
 
                 actors.get(position).tell(new TakeToken(), getSelf());
             } catch (Exception ex) {
-                System.out.println("Impossibile eseguire il passToken. \n" + ex.getMessage());
+                log("Impossibile eseguire il passToken. \n" + ex.getMessage());
             }
         }).build();
     }

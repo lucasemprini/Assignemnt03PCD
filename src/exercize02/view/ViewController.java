@@ -4,7 +4,10 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import exercize02.model.actors.GUIActor;
-import exercize02.model.messages.*;
+import exercize02.model.messages.ActorSelectedMsg;
+import exercize02.model.messages.AddActorButtonPressedMsg;
+import exercize02.model.messages.RemActorButtonPressedMsg;
+import exercize02.model.messages.SendButtonMessageMsg;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
@@ -12,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ViewController {
+    private final Map<ActorRef, ObservableList<String>> listOfChats = new HashMap<>();
     public ListView<String> listOfMessages;
     public ListView<ActorRef> actorsList;
     public TextArea textArea;
@@ -19,8 +23,6 @@ public class ViewController {
     public Button sendButton;
     public Button addButton;
     public Button removeButton;
-
-    private final Map<ActorRef, ObservableList<String>> listOfChats = new HashMap<>();
     private ActorRef guiActor;
 
     public void initialize() {
@@ -51,7 +53,7 @@ public class ViewController {
             }
         });
 
-        this.actorsList.setOnMouseClicked( ev -> {
+        this.actorsList.setOnMouseClicked(ev -> {
             final ActorRef currentActor = this.actorsList.getSelectionModel().getSelectedItem();
             this.guiActor.tell(new ActorSelectedMsg(), ActorRef.noSender());
             this.sendButton.setDisable(false);
@@ -63,7 +65,7 @@ public class ViewController {
             System.out.println(listOfMessages.getItems());
             //////////////
 
-            this.sendButton.setOnAction( add -> {
+            this.sendButton.setOnAction(add -> {
                 this.invokeGuiActorForSendMsg(currentActor,
                         this.getTextFromArea());
                 this.sendButton.setDisable(true);

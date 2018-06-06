@@ -2,6 +2,9 @@ package exercize02.model.messages;
 
 import akka.actor.ActorRef;
 
+/**
+ * Notifica la possibilità di uscire da parte di un attore dalla chat
+ */
 public class CanExit {
     private final ActorRef removeWho;
 

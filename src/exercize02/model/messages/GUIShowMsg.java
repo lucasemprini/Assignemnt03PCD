@@ -5,8 +5,10 @@ import akka.actor.ActorRef;
 public class GUIShowMsg {
     private final String msg;
     private final ActorRef sender;
+    private final String prefix;
 
-    public GUIShowMsg(final String msg, final ActorRef sender) {
+    public GUIShowMsg(final String prefix, final String msg, final ActorRef sender) {
+        this.prefix = prefix;
         this.msg = msg;
         this.sender = sender;
     }
@@ -17,5 +19,13 @@ public class GUIShowMsg {
 
     public ActorRef getSender() {
         return sender;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public String getFullMsg() {
+        return getPrefix() + getMsg();
     }
 }

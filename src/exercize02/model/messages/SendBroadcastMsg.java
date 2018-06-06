@@ -4,6 +4,9 @@ import akka.actor.ActorRef;
 
 import java.util.List;
 
+/**
+ * Richiesta di invio di un messaggio in broadcast agli altri attori presenti.
+ */
 public class SendBroadcastMsg {
 
     private final String msg;
@@ -14,10 +17,18 @@ public class SendBroadcastMsg {
         this.actors = actorRefs;
     }
 
+    /**
+     * Messaggio
+     * @return
+     */
     public String getMsg() {
         return msg;
     }
 
+    /**
+     * Attori a cui inviare il messaggio
+     * @return
+     */
     public List<ActorRef> getActors() {
         return actors;
     }
