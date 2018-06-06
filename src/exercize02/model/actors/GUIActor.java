@@ -79,7 +79,7 @@ public class GUIActor extends AbstractActor {
                     this.currentChat.clear();
                     System.out.println("Removing chat: " + this.currentChat);
                     this.mapOfChats.remove(toBeRemoved);
-
+                    ActorSystem.create("MySystem").stop(toBeRemoved);
             });
         }).match(GUIShowMsg.class, msg -> {
             /*
