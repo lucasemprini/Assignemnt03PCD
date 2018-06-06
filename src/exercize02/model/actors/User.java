@@ -9,10 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-interface Operation {
-    void compute();
-}
-
 public class User extends AbstractActorWithStash {
 
     /**
@@ -238,6 +234,7 @@ public class User extends AbstractActorWithStash {
 
     /**
      * Verifica la presenza del token, se non c'è esegue la stash(), altrimenti esegue l'operazione fornita come parametro.
+     *
      * @param operation
      */
     private void stashOrDo(final Operation operation) {

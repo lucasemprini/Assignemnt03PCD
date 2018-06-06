@@ -32,39 +32,43 @@ public class Register extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder().match(AddActorButtonPressedMsg.class, msg -> {
-            try {
-                actors.add(getSender());
-            } catch (Exception e) {
-                log("Impossibile registrare l'attore.\n" + e.getMessage());
-            }
+            loggedOperation(() -> actors.add(getSender()), "Impossibile registrare l'attore.");
+
         }).match(RemActorButtonPressedMsg.class, msg -> {
-            try {
+            loggedOperation(() -> {
                 actors.remove(msg.getToBeRemoved());
                 getSender().tell(new CanExit(msg.getToBeRemoved()), getSender());
-            } catch (Exception e) {
-                log("Impossibile registrare l'attore.\n" + e.getMessage());
-            }
+            },"Impossibile registrare l'attore.");
+
         }).match(GetMeOthers.class, getMeOthers -> {
-            try {
+            loggedOperation(() -> {
                 List<ActorRef> app = new LinkedList<>(actors);
                 app.remove(getSender());
-
                 getSender().tell(new OtherActors(app), getSelf());
-            } catch (Exception ex) {
-                log("Impossibile rispondere alla getMeOthers.\n" + ex.getMessage());
-            }
+            }, "Impossibile rispondere alla getMeOthers.");
+
         }).match(PassToken.class, passToken -> {
-            try {
-
-                //if (position >= actors.size()) position = 0;
+            loggedOperation(() -> {
                 position = position % (actors.size());
-
                 actors.get(position).tell(new TakeToken(), getSelf());
                 position++;
-            } catch (Exception ex) {
-                log("Impossibile eseguire il passToken. \n" + ex.getMessage());
-            }
+            }, "Impossibile eseguire il passToken");
+
         }).build();
+    }
+
+
+    /**
+     * Esegue l'operazione all'interno di un try-catch e se Main.DEBUG = TRUE ne logga l'eventuali eccezioni.
+     * @param operation
+     * @param prefix
+     */
+    private void loggedOperation(final Operation operation, final String prefix) {
+        try {
+            operation.compute();
+        } catch (Exception ex) {
+            log(prefix + "\nError details: " + ex.getMessage());
+        }
     }
 
 
