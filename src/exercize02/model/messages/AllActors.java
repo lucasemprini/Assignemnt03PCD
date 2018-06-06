@@ -8,11 +8,11 @@ import java.util.List;
  * Notifica da parte del registry per fornire gli attori presenti in chat,
  * escluso il destinatario.
  */
-public class OtherActors {
+public class AllActors {
 
     private final List<ActorRef> actors;
 
-    public OtherActors(final List<ActorRef> actor) {
+    public AllActors(final List<ActorRef> actor) {
         this.actors = actor;
     }
 

@@ -8,8 +8,8 @@ import exercize02.model.actors.GUIActor;
 import exercize02.model.actors.Register;
 import exercize02.model.actors.User;
 import exercize02.model.messages.AddActorButtonPressedMsg;
+import exercize02.model.messages.AllActors;
 import exercize02.model.messages.GetMeActors;
-import exercize02.model.messages.OtherActors;
 import exercize02.model.messages.RemActorButtonPressedMsg;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +53,7 @@ public class UserTest {
         registry.tell(new AddActorButtonPressedMsg(), chatTwo);
 
         registry.tell(new GetMeActors(), testUnit.getRef());
-        OtherActors msg = testUnit.expectMsgClass(OtherActors.class);
+        AllActors msg = testUnit.expectMsgClass(AllActors.class);
 
         assertEquals(2, msg.getActors().size());
         assertEquals(chatOne, msg.getActors().get(0));
@@ -76,7 +76,7 @@ public class UserTest {
         Thread.sleep(100);
 
         registry.tell(new GetMeActors(), testUnit.getRef());
-        OtherActors msg = testUnit.expectMsgClass(OtherActors.class);
+        AllActors msg = testUnit.expectMsgClass(AllActors.class);
 
         assertEquals(1, msg.getActors().size());
         assertEquals(chatTwo, msg.getActors().get(0));

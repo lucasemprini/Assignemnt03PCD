@@ -21,11 +21,9 @@ public class Register extends AbstractActor {
      *      rimuove dalla lista degli attori registrati il sender e gli notificata tramite il messaggio CanExit
      *      che può avviare le operazioni di uscita
      *  - GetMeActors
-     *      Risponde a questo messaggio inviando al sender un messaggio OthrerActors nel quale fornisce la lista di attori
-     *      registrati escluso quello che la richiede
-     *  - PassToken
-     *      Assegna il token all'elemento successivo della lista, raggiunto l'ultimo riparte.
-     *      Glielo notifica tramite il messaggio takeToken
+     *      Risponde a questo messaggio inviando al sender un messaggio AllActors nel quale fornisce la lista di attori
+     *      registrati
+
      * @return
      */
     @Override
@@ -41,7 +39,7 @@ public class Register extends AbstractActor {
 
         }).match(GetMeActors.class, getMeActors -> {
             loggedOperation(() -> {
-                getSender().tell(new OtherActors(actors), getSelf());
+                getSender().tell(new AllActors(actors), getSelf());
             }, "Impossibile rispondere alla getMeActors.");
 
         }).build();
