@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 import java.util.Map;
 
@@ -101,6 +102,7 @@ public class GUIActor extends AbstractActor {
         }).match(ActorSelectedMsg.class, msg -> {
             Platform.runLater(() -> {
                 this.currentChat = mapOfChats.get(msg.getSelected());
+                this.actorLabel.setTextFill(Color.BLACK);
                 this.actorLabel.setText(msg.getSelected().path().name() + " says:");
             });
         }).build();
