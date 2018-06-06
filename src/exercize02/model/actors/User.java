@@ -66,11 +66,11 @@ public class User extends AbstractActorWithStash {
             }
         }).match(AcknowledgeMsg.class, acknowledgeMsg -> {
             incCounter();
-            log("Ricevuto un acknowledge");
             if (getCounter() >= getWaitingActors()) {
+                final String msg = "Me: " + acknowledgeMsg.getMsg().split(":")[1];
+                guiActor.tell(new GUIShowMsg(msg, getSelf()), getSelf());
                 reset();
                 log("Chiamo la GUI per renderizzare su di me");
-                guiActor.tell(new GUIShowMsg(acknowledgeMsg.getMsg(), getSelf()), getSelf());
             }
         }).match(GUIAcknowledgeMsg.class, guiAcknowledgeMsg -> {
             if (guiAcknowledgeMsg.getSender() == getSelf()) {
@@ -79,7 +79,7 @@ public class User extends AbstractActorWithStash {
                 guiAcknowledgeMsg.getSender().tell(new AcknowledgeMsg(guiAcknowledgeMsg.getMsg()), getSelf());
             }
         }).match(ShowMsg.class, showMsg -> {
-            guiActor.tell(new GUIShowMsg(showMsg.getMsg(), getSender()), getSelf());
+            guiActor.tell(new GUIShowMsg(getSender().path().name()+ ": " +showMsg.getMsg(), getSender()), getSelf());
         }).match(TerminateUserOperation.class, terminateUserOperation -> {
             if (wantExit) {
                 registry.tell(RemActorButtonPressedMsg.class, getSelf());

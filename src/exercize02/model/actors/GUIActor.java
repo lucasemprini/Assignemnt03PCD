@@ -29,9 +29,9 @@ public class GUIActor extends AbstractActor {
             msg.getSender().tell(new SendMsg(msg.getMessage(), msg.getListOfMessages()), getSender());
         }).match(AddActorButtonPressedMsg.class, msg -> {
             Platform.runLater(() -> {
+                final String actorName = ActorsUtility.generateActorName();
                 final ActorRef newActor = getContext().getSystem().actorOf(
-                        Props.create(User.class, ActorsUtility.generateActorName()),
-                        ActorsUtility.generateActorName());
+                        Props.create(User.class, actorName), actorName);
                 registry.tell(new AddActorButtonPressedMsg(), newActor);
                 newActor.tell(new StartUser(registry, getSelf()), ActorRef.noSender());
 
@@ -49,9 +49,11 @@ public class GUIActor extends AbstractActor {
         }).match(CanExit.class, canExit -> {
             Platform.runLater(() -> this.users.remove(canExit.getToBeRemoved()));
         }).match(GUIShowMsg.class, msg -> {
+            System.out.println("Renderizzo, ricevuto da" + getSender().toString());
 
+            final ActorRef sender = getSender();
             //TODO NON VIENE RAGGIUNTO QUESTO PUNTO!!!
-            Platform.runLater(() -> this.mapOfChats.get(getSender()).add(msg.getMsg()));
+            Platform.runLater(() -> this.mapOfChats.get(sender).add(msg.getMsg()));
 
             ///////////////////
             //System.out.println(this.mapOfChats.get(getSender()));
