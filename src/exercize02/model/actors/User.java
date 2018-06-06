@@ -211,9 +211,6 @@ public class User extends AbstractActorWithStash {
      * @param nWaiting numero di attori, per funzionare bene deve essere compreso di se stesso.
      */
     private void setWaitingActors(int nWaiting) {
-        if (nWaiting > 0) {
-            setWaiting(true);
-        }
         this.nWaiting = nWaiting;
     }
 
@@ -237,7 +234,6 @@ public class User extends AbstractActorWithStash {
     private void reset() {
         counter = 0;
         setWaitingActors(0);
-        setWaiting(false);
     }
 
     /**
