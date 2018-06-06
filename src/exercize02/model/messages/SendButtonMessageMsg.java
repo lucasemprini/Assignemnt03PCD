@@ -3,6 +3,9 @@ package exercize02.model.messages;
 import akka.actor.ActorRef;
 import javafx.collections.ObservableList;
 
+/**
+ * Richiesta di invio da parte dell'utente di un messaggio.
+ */
 public class SendButtonMessageMsg {
 
     private final String whatMessage;

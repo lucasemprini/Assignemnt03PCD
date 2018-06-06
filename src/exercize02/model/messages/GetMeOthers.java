@@ -1,5 +1,6 @@
 package exercize02.model.messages;
 
-import akka.actor.ActorRef;
-
+/**
+ * Richiesta di restituzione di tutti gli attori, tranne il mittente, presenti nella chat.
+ */
 public class GetMeOthers {}

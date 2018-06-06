@@ -12,11 +12,12 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    public static final boolean DEBUG = true;
     private static final String LAYOUT_PATH = "/exercize02/view/view.fxml";
     private static final String WINDOW_TITLE = "ACTORS CHAT";
 
     public static void main(String... args) {
-            launch(args);
+        launch(args);
     }
 
     @Override
@@ -28,6 +29,7 @@ public class Main extends Application {
 
     /**
      * Metodo per inizializzare la GUI dell'applicazione.
+     *
      * @param primaryStage lo stage primario della GUI JavaFX.
      * @return il FXMLLoader.
      */
