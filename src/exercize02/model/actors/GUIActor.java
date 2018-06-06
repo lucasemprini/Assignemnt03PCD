@@ -5,7 +5,6 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import exercize02.model.messages.*;
-import exercize02.model.utility.ActorsUtility;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,8 +45,9 @@ public class GUIActor extends AbstractActor {
      *      - GUIShowMsg
      *          richiesta di visualizzazione di un msg da parte di un attore
      *      - ActorSelectedMsg
-     *          TODO non usato..
-     * @return
+     *          riassegna la ObservableList corrente con quella dell'attore selezionato presente
+     *          nella mappa, e modifica la Label con il nome dell'attore.
+     * @return una Receive
      */
     @Override
     public Receive createReceive() {
@@ -76,9 +76,7 @@ public class GUIActor extends AbstractActor {
             Platform.runLater(() -> {
                     final ActorRef toBeRemoved = canExit.getToBeRemoved();
                     this.users.remove(toBeRemoved);
-                    System.out.println("Removing chat: " + this.currentChat);
                     this.currentChat.clear();
-                    System.out.println("Removing chat: " + this.currentChat);
                     this.mapOfChats.remove(toBeRemoved);
                     ActorSystem.create("MySystem").stop(toBeRemoved);
             });
@@ -91,10 +89,6 @@ public class GUIActor extends AbstractActor {
 
             Platform.runLater(() -> {
                 this.mapOfChats.get(sender).add(msg.getFullMsg());
-                System.out.println("Map of chats.get(sender) = "
-                        + this.mapOfChats.get(sender)
-                        + "\nSender: " + sender
-                        + "\nmessage: " + msg.getFullMsg());
             });
 
 

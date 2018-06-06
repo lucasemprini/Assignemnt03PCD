@@ -42,7 +42,7 @@ public class UserTest {
 
     /**
      * Aggiunta di due attori al registro e visualizzazione del corretto funzionamento del GetMeActors
-     * @throws Exception
+     * @throws Exception una eccezione.
      */
     @Test
     public void addActorToRegistryAndGet() throws Exception {
@@ -62,7 +62,7 @@ public class UserTest {
 
     /**
      * Test del corretto funzionamento della rimozione di un attore dal registry
-     * @throws Exception
+     * @throws Exception una eccezione.
      */
     @Test
     public void removeActorToRegistry() throws Exception {

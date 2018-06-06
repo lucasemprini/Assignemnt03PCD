@@ -21,7 +21,7 @@ public class GUIShowMsg {
         return sender;
     }
 
-    public String getPrefix() {
+    private String getPrefix() {
         return prefix;
     }
 

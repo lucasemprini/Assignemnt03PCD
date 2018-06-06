@@ -26,7 +26,10 @@
                      <TextArea fx:id="textArea" BorderPane.alignment="CENTER" />
                   </center>
                   <top>
-                     <Label fx:id="labelActorInfo" text="Actor tizio:" BorderPane.alignment="CENTER" />
+                     <Label fx:id="labelActorInfo" BorderPane.alignment="CENTER">
+                        <font>
+                           <Font size="18.0" />
+                        </font></Label>
                   </top>
                   <bottom>
                      <AnchorPane BorderPane.alignment="CENTER">
@@ -43,7 +46,10 @@
       <AnchorPane id="center_pane">
          <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
-               <Label text="Actors List" BorderPane.alignment="CENTER" />
+               <Label text="Actors List" BorderPane.alignment="CENTER">
+                  <font>
+                     <Font size="18.0" />
+                  </font></Label>
             </top>
             <center>
                <ListView fx:id="actorsList" BorderPane.alignment="CENTER" />
